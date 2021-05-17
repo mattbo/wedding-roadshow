@@ -1,14 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `The Wedding Roadshow`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Matt Bosworth`,
+      summary: `who lives and works in a van, building useful stuff out of software.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Charla and Matt, gettin hitched`,
+    siteUrl: `https://rovinwedding.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `mattbo`,
+      instagram: `c_k_w_w_k_c`
     },
   },
   plugins: [
@@ -123,6 +124,25 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
+    /*
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyBSEHdDt-issPfZkU2RmW0fLh_M09yleDo",
+          authDomain: "wedding-roadshow.firebaseapp.com",
+          // databaseURL: "https://wedding-roadshow-default-rtdb.firebaseio.com/",
+          databaseURL: "http://localhost:9000/",
+          projectId: "wedding-roadshow",
+          projectNumber: "333074285854",
+          storageBucket: "wedding-roadshow.appspot.com",
+          messagingSenderId: "333074285854",
+          appId: "1:333074285854:web:8ed9d392b711af40eb350f",
+          measurementId: "G-7X6M7PQ97B"
+        }
+      }
+    }
+    */
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
