@@ -124,25 +124,6 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
-    /*
-    {
-      resolve: "gatsby-plugin-firebase",
-      options: {
-        credentials: {
-          apiKey: "AIzaSyBSEHdDt-issPfZkU2RmW0fLh_M09yleDo",
-          authDomain: "wedding-roadshow.firebaseapp.com",
-          // databaseURL: "https://wedding-roadshow-default-rtdb.firebaseio.com/",
-          databaseURL: "http://localhost:9000/",
-          projectId: "wedding-roadshow",
-          projectNumber: "333074285854",
-          storageBucket: "wedding-roadshow.appspot.com",
-          messagingSenderId: "333074285854",
-          appId: "1:333074285854:web:8ed9d392b711af40eb350f",
-          measurementId: "G-7X6M7PQ97B"
-        }
-      }
-    }
-    */
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
