@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import logo from "../images/MC_logo.svg"
 
 
 const Layout = ({ location, title, children }) => {
@@ -19,19 +20,22 @@ const Layout = ({ location, title, children }) => {
 
       <ul className="navbar">
         <li className="h3">
-          <Link to='/idea' itemProp="url">The Idea</Link></li>
+          <Link to='/idea' itemProp="url">The idea</Link></li>
         <li className="h3">
-          <Link to='/map' itemProp="url">The Map</Link></li>
+          <Link to='/map' itemProp="url">The map</Link></li>
         <li className="h3">
-          <Link to='/playlist' itemProp="url">The Playlist</Link></li>
+          <Link to='/playlist' itemProp="url">The playlist</Link></li>
         <li className="h3">
-          <Link to='/blog_top' itemProp="url">The Blog</Link></li>
+          <Link to='/registry' itemProp="url">The registry</Link></li>
+        <li className="h3">
+          <Link to='/blog_top' itemProp="url">The blog</Link></li>
       </ul>
       <div className="global-wrapper" data-is-root-path={isRootPath}>
         <main>{children}</main>
         <footer>
          <p>
-           Written by <strong>Charla</strong>; built by <strong>Matt</strong>
+           <img width="60px" src={logo} alt="Matt and Charla logo"/>
+          Designed by <strong>Charla</strong>; built by <strong>Matt</strong>
          </p>
           © {new Date().getFullYear()}, Built with
           {` `} <a href="https://www.gatsbyjs.com">Gatsby</a>

@@ -99,11 +99,10 @@
    }, [firebase])
 
    return (
-     <Layout location={location} title='The Playlist'>
+     <Layout location={location} title='The playlist'>
      <Seo title="The Playlist" />
      <Container>
        <Row> <Col>
-       <p> What's a road trip without a playlist??  </p>
        <p> Ok people, this is important. A good playlist is essential to a
        celebration, right? Help us stack this one with all the best tunes for
        the road - you know, those songs that get you tapping the steering wheel

@@ -1,10 +1,12 @@
 import * as React from "react"
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
   
 const SpotifyResults = ({results, add_callback}) => {
     if (!results) { return <div></div>}
     console.log(results);
     return (
-        <table className="table">
+        <Table striped bordered hover>
             <thead>
                 <tr>
                     <th></th>
@@ -16,12 +18,12 @@ const SpotifyResults = ({results, add_callback}) => {
             </thead><tbody>
                 {results.tracks.items.map((t) => 
                     <tr>
-                        <td><button className='btn btn-primary'
+                        <td><Button className='btn btn-primary'
                                     spotify_uri={t.uri} 
                                     spotify_artist={t.artists.map(a => a.name).join(',')}
                                     spotify_name={t.name}
                                     onClick={add_callback}>
-                              Add to playlist</button></td>
+                              Add to playlist</Button></td>
                         <td>{t.name}</td>
                         <td>{t.artists.map(a => a.name).join(', ')}</td>
                         <td>{t.album.name}</td>
@@ -29,7 +31,7 @@ const SpotifyResults = ({results, add_callback}) => {
                     </tr>)
                 }
             </tbody>
-        </table>
+        </Table>
     )
  }
 

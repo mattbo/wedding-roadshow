@@ -18,8 +18,11 @@ export default function getFirebase() {
             appId: process.env.FIREBASE_APPID,
             measurementId: process.env.FIREBASE_MEASUREMENTID
         });
-        // Emulator only!
-        // instance.database().useEmulator("localhost", 9000);
+        
+        // Variable is only set in .env.development
+        if (process.env.FIREBASE_EMULATOR) { 
+            instance.database().useEmulator("localhost", 9000);
+        }
         return instance;
     }
     return null;

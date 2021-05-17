@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `The Wedding Roadshow`,
+    title: `The wedding roadshow`,
     author: {
       name: `Matt Bosworth`,
       summary: `who lives and works in a van, building useful stuff out of software.`,
@@ -113,13 +113,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `The Wedding Roadshow Blog`,
+        short_name: `WeddingRoadshow`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/MC_logo.svg`, // relative to the root of the site.
       },
     },
     `gatsby-plugin-react-helmet`,

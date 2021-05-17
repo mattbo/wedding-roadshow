@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
+// import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -19,7 +19,6 @@ const MainPage = ({ data, location }) => {
 
       <p>Global pandemics notwithstanding, we hope to see each and every one of you in your hometown real soon!</p>
 
-      <Bio />
     </Layout>
   )
 }
