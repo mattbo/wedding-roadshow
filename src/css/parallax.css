@@ -1,5 +1,5 @@
 .parallax {
-    background-image: url("images/road-landscape-nature-sky-56832.jpg");
+    background-image: url("../images/landscapeNoDot.jpg");
 
     height: 100%;
     min-height: 100vh;
@@ -9,13 +9,31 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.parallax-dot {
+    background-image: url("../images/landscapeWithDot.jpg");
+
+    height: 100%;
+    min-height: 100vh;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax-text {
+    font-family: 'Mr Dafoe', cursive;
+    font-size: 10rem;
+}
+
 header.hero-header h1.main-heading{ 
     text-align: left;
     color: white;
     width: 12em;
     background-color: rgba(0,0,0,0);
     position: absolute;
-    top: 94%;
+    bottom: 0.2em;
     width: 100%;
   }
   

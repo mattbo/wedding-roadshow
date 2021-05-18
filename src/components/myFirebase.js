@@ -20,7 +20,7 @@ export default function getFirebase() {
         });
         
         // Variable is only set in .env.development
-        if (process.env.FIREBASE_EMULATOR) { 
+        if (process.env.FIREBASE_EMULATOR === "1") { 
             instance.database().useEmulator("localhost", 9000);
         }
         return instance;

@@ -1,10 +1,8 @@
 import * as React from "react"
-import { graphql } from "gatsby"
 import Button from "react-bootstrap/Button"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import MapImg from "../images/furkot.png"
 
 const RegistryIndex = ({ data, location }) => {
 
@@ -21,23 +19,14 @@ const RegistryIndex = ({ data, location }) => {
       <p> That said, I know that some of you are traditionalists and like giving
           gifts.  For you, we have registered with a site called honeyfund.</p>
 
-      <a target="_blank" 
+      <a rel="noreferrer" target="_blank" 
          href="https://honeyfund.com/wedding/CharlaandMattGetHitched">
         <Button>Give us stuff on Honeyfund.com</Button>
       </a>
-
+          honeyfund.com/wedding/CharlaandMattGetHitched
+          
     </Layout>
   )
 }
 
 export default RegistryIndex
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`

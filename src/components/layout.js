@@ -1,11 +1,16 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import logo from "../images/MC_logo.svg"
+import Login from './login'
 
 
 const Layout = ({ location, title, children }) => {
+  // const [showModal, setShowModal] = React.useState(false);
+  let showModal = false;
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
+  const bgImage = isRootPath ? 'parallax-dot' : 'parallax';
+
   let header = (
     <h1 className="main-heading">
       <Link to="/">{title}</Link>
@@ -13,10 +18,10 @@ const Layout = ({ location, title, children }) => {
   )
 
   return (
-    <div id="outermost">
-    <div className='parallax' >
-      <header className="hero-header">{header}</header>
-    </div>
+    <div>
+      <div className={bgImage} >
+        <header className="hero-header">{header}</header>
+      </div>
 
       <ul className="navbar">
         <li className="h3">
@@ -34,13 +39,14 @@ const Layout = ({ location, title, children }) => {
         <main>{children}</main>
         <footer>
          <p>
-           <img width="60px" src={logo} alt="Matt and Charla logo"/>
+           <img width="60px" src={logo} alt="Matt and Charla logo"/> &nbsp;
           Designed by <strong>Charla</strong>; built by <strong>Matt</strong>
          </p>
           © {new Date().getFullYear()}, Built with
           {` `} <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
       </div>
+      <Login />
     </div>
   )
 }

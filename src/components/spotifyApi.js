@@ -9,7 +9,7 @@ export function getSpotify() {
         if(instance) return new Promise ((resolve, reject) => resolve(instance))
         const functions = getFirebase().functions('us-central1');
 
-        if (process.env.FIREBASE_EMULATOR) { 
+        if (process.env.FIREBASE_EMULATOR === "1") { 
             functions.useEmulator('localhost', 5001)
         }
 

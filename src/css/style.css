@@ -413,6 +413,10 @@ ul.navbar li {
   text-decoration: line-through;
 }
 
+.modal-content { 
+    padding: 10px 30px;
+}
+
 .playlistData {
   max-height: 30em;
   overflow-y: scroll;

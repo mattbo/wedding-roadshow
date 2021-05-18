@@ -1,15 +1,13 @@
 import * as React from "react"
-import { graphql } from "gatsby"
 
 // import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const IdeaPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title="The idea">
       <Seo title="All posts" />
 
     <p>Matt was scarred as a child and is no longer interested in huge parties where you don’t get to spend time with people.  </p>
@@ -44,13 +42,3 @@ const IdeaPage = ({ data, location }) => {
 }
 
 export default IdeaPage
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
