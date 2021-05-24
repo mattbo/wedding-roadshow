@@ -5,16 +5,12 @@ import Login from './login'
 
 
 const Layout = ({ location, title, children }) => {
-  // const [showModal, setShowModal] = React.useState(false);
-  let showModal = false;
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   const bgImage = isRootPath ? 'parallax-dot' : 'parallax';
 
   let header = (
-    <h1 className="main-heading">
-      <Link to="/">{title}</Link>
-    </h1>
+    <h1 className="main-heading">{title}</h1>
   )
 
   return (
@@ -25,7 +21,7 @@ const Layout = ({ location, title, children }) => {
 
       <ul className="navbar">
         <li className="h3">
-          <Link to='/idea' itemProp="url">The idea</Link></li>
+          <Link to='/' itemProp="url">The idea</Link></li>
         <li className="h3">
           <Link to='/map' itemProp="url">The map</Link></li>
         <li className="h3">

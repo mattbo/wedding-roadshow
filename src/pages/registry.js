@@ -11,19 +11,18 @@ const RegistryIndex = ({ data, location }) => {
       <Seo title="The registry" />
 
       <br/>
-      <p> The real point of this entire exercise is to spend time with friends
-          and family.  So the ideal gift would be the gift of your time.  Take
-          us out for a meal.  Show us the local attractions.  Or just let us
-          park in your driveway for a few days!  </p>
+      <p> Our biggest wish on this wedding-road-trip-adventure is to spend time
+          with friends and family.  So the ideal gift would be the gift of your
+          time.  Sit with us on the proch or in the park. Show us your favorite
+          local spots.  Or just let us park in your driveway and be in your hair          for a few days!  </p>
 
-      <p> That said, I know that some of you are traditionalists and like giving
-          gifts.  For you, we have registered with a site called honeyfund.</p>
+      <p> That said, for friends and family who have expressed an interest,
+           we have registered with a site called honeyfund.</p>
 
       <a rel="noreferrer" target="_blank" 
          href="https://honeyfund.com/wedding/CharlaandMattGetHitched">
-        <Button>Give us stuff on Honeyfund.com</Button>
+        <Button>Honeyfund.com</Button>
       </a>
-          honeyfund.com/wedding/CharlaandMattGetHitched
           
     </Layout>
   )

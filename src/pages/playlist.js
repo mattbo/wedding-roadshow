@@ -103,16 +103,22 @@
      <Seo title="The Playlist" />
      <Container>
        <Row> <Col>
-       <p> Ok people, this is important. A good playlist is essential to a
-       celebration, right? Help us stack this one with all the best tunes for
+       <p> Ok people, this is important.</p>
+       <p> A good playlist is essential to a celebration, right? </p>
+       <p> Help us stack this one with all the best tunes for
        the road - you know, those songs that get you tapping the steering wheel
        and drumming the dashboard with the windows down on backcountry roads,
        those sunset ready nostalgic crooners, songs meant for campfires and
        starry skies, and, of course, that song we have to listen to as we roll
-       into your city. And those get down party songs you want hear when we’re
+       into your city.</p>
+
+       <p>And those get down party songs you want hear when we’re
        kicking it with you in the park (beach, trail, backyard, out on the
-       dock...fill in the blank here). And, you know, some rocking love songs -
+       dock...fill in the blank here). </p>
+
+       <p>And, you know, some rocking love songs &mdash;
        it is a wedding, after all. </p>
+
        <p> Jokes accepted, of course, but don’t be
        surprised when that one you added for giggles gets booted to the B-list
        once it’s come up one too many times. </p>

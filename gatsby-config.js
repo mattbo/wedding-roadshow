@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `The wedding roadshow`,
+    title: `Rovin wedding`,
     author: {
       name: `Matt Bosworth`,
       summary: `who lives and works in a van, building useful stuff out of software.`,
     },
     description: `Charla and Matt, gettin hitched`,
-    siteUrl: `https://rovinwedding.com/`,
+    siteUrl: `https://gothewholewideworld.com/`,
     social: {
       twitter: `mattbo`,
       instagram: `c_k_w_w_k_c`
@@ -113,8 +113,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `The Wedding Roadshow Blog`,
-        short_name: `WeddingRoadshow`,
+        name: `The rovin wedding blog`,
+        short_name: `RovinWedding`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -123,7 +123,14 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-gatsby-cloud`
+    `gatsby-plugin-gatsby-cloud`,
+    {
+        resolve: `gatsby-plugin-react-leaflet`,
+        options: {
+            linkStyles: true // (default: true)
+            // Enabled/disable loading stylesheets via CDN
+        }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

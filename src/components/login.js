@@ -33,7 +33,7 @@ class Login extends React.Component {
        <Modal.Body>
         <p> Yeah, it's annoying, but we can't have just anyone adding to our
             playlist! </p>
-        <p> The password is somewhere on the invitation (paper or email) </p>
+        <p> The password is somewhere on the announcement (paper or email) </p>
         <p>... keep looking...  </p>
         <p>... I have faith in you... </p>
         <Form
