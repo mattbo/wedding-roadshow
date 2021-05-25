@@ -57,6 +57,11 @@
      setShowModal(true);
    }
      
+   const cancelSong = evt => { 
+       evt.preventDefault();
+       setShowModal(false);
+   }
+
    const saveSong = (evt) => {
      // Called from the modal submit; add to spotify and firebase.
      evt.preventDefault();
@@ -160,24 +165,26 @@
      <Modal show={showModal} size="lg" 
         backdrop="static" centered keyboard="false">
        <Modal.Header>
-         Claim your song!
+         Add to the playlist!
        </Modal.Header>
        <Modal.Body>
          <Form onSubmit={saveSong}>
-           <Form.Label htmlFor='personName'>Name </Form.Label>
+           <Form.Label htmlFor='personName'>What's your name? </Form.Label>
            <Form.Control id='songPerson' name='person' type='text'
             onChange={handleModal}
             default='your name'>
              </Form.Control>
              <br/>
-           <Form.Label htmlFor='reason'>Note </Form.Label>
+           <Form.Label htmlFor='reason'>Why this song? </Form.Label>
            <Form.Control id='songReason' name='reason' as='textarea' rows={3}
             onChange={handleModal}
             placeholder='Go on, tell us the story!'>
            </Form.Control>
            <br/>
            <Button onClick={saveSong} className='btn btn-primary'>
-             Submit</Button>
+             Submit</Button>&nbsp;
+           <Button onClick={cancelSong} className='btn btn-secondary'>
+             Cancel</Button>
          </Form>
        </Modal.Body>
      </Modal>

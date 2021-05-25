@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { Container, Row, Col } from "react-bootstrap";
 import logo from "../images/MC_logo.svg"
 import Login from './login'
 
@@ -19,18 +20,19 @@ const Layout = ({ location, title, children }) => {
         <header className="hero-header">{header}</header>
       </div>
 
-      <ul className="navbar">
-        <li className="h3">
-          <Link to='/' itemProp="url">The idea</Link></li>
-        <li className="h3">
-          <Link to='/map' itemProp="url">The map</Link></li>
-        <li className="h3">
-          <Link to='/playlist' itemProp="url">The playlist</Link></li>
-        <li className="h3">
-          <Link to='/registry' itemProp="url">The registry</Link></li>
-        <li className="h3">
-          <Link to='/blog_top' itemProp="url">The blog</Link></li>
-      </ul>
+      <Container>
+      <Row className="navbar">
+        <Col xs={12} md={2} className="h3">
+          <Link to='/' itemProp="url">The idea</Link></Col>
+        <Col xs={12} md={2} className="h3">
+          <Link to='/map' itemProp="url">The map</Link></Col>
+        <Col xs={12} md={3} className="h3">
+          <Link to='/playlist' itemProp="url">The playlist</Link></Col>
+        <Col xs={12} md={3} className="h3">
+          <Link to='/registry' itemProp="url">The registry</Link></Col>
+        <Col xs={12} md={2} className="h3">
+          <Link to='/blog_top' itemProp="url">The blog</Link></Col>
+      </Row><Row>
       <div className="global-wrapper" data-is-root-path={isRootPath}>
         <main>{children}</main>
         <footer>
@@ -42,6 +44,7 @@ const Layout = ({ location, title, children }) => {
           {` `} <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
       </div>
+      </Row></Container>
       <Login />
     </div>
   )

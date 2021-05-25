@@ -437,3 +437,7 @@ ul.navbar li {
 .playlistEntry {
   margin: 1em 1em;
 }
+
+.playlistEntry p {
+    overflow: wrap;
+}

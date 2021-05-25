@@ -14,9 +14,9 @@ const MainPage = ({ data, location }) => {
       <p> We’re sure that it comes as a surprise to no one, but we’re upending
           ritual and tradition and doing our own thing. </p>
 
-      <p>Go read about &nbsp;<Link to='idea'>The idea</Link>. Then take a look at
-          &nbsp;<Link to="map">The map</Link>. Don’t forget to add some tracks to our
-          &nbsp;<Link to="playlist">playlist</Link>.</p>
+      <p>Go read about&nbsp;<Link to='idea'>The idea</Link>. Then take a look
+          at&nbsp;<Link to="map">The map</Link>. Don’t forget to add some
+          tracks to our&nbsp;<Link to="playlist">playlist</Link>.</p>
 
       <p>Global pandemics notwithstanding, we hope to see each and every one of
           you around your stomping grounds real soon!</p>

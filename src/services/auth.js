@@ -12,7 +12,7 @@ const setUser = user =>
   window.localStorage.setItem(lsKey, JSON.stringify(user))
 
 export const handleLogin = ({ password }) => {
-  if (password === PASS) {
+  if (password.toLowerCase() === PASS.toLowerCase()) {
     return setUser({
       username: `anon`,
     })
