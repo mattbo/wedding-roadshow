@@ -155,7 +155,7 @@
          <Form.Control id="track_search" type="text" sz="lg"
            ref={(input) => searchTerms = input} name="search" >
          </Form.Control>
-         <Button className='btn btn-primary' onClick={doSearch}>
+         <Button className='btn btn-primary search' onClick={doSearch}>
            Search Spotify</Button>
          </Form.Group>
        </Form>

@@ -3,8 +3,6 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import MapImg from "../images/furkot.png"
-import under_construction from "../images/underconstruction.gif"
 import MyMap from "../components/myMap"
 
 const MapIndex = ({ data, location }) => {
@@ -21,14 +19,9 @@ const MapIndex = ({ data, location }) => {
           Direct us to that concert venue we have to make sure stays afloat.
           Let us in on the best ____ in ____.  Don't forget ice cream. </p>
 
-          { /* <MyMap /> */ }
-      <img width="100%" src={MapImg} alt="map with our route" />
-      <br/>
+      <MyMap />
 
-      <img src={under_construction} alt="under construction" />
-      <h4> Map form is still in development... check back soon! </h4>
-      <img src={under_construction} alt="under construction" />
-          
+      <hr/>  
       <p> Here's a rough overview of the itinerary: </p>
       <ul>
           <li> Leave San Diego mid-August, 2021 </li>

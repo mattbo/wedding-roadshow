@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Rovin wedding`,
+    title: `Rovin' wedding`,
     author: {
       name: `Matt Bosworth`,
       summary: `who lives and works in a van, building useful stuff out of software.`,
@@ -124,13 +124,6 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
-    {
-        resolve: `gatsby-plugin-react-leaflet`,
-        options: {
-            linkStyles: true // (default: true)
-            // Enabled/disable loading stylesheets via CDN
-        }
-    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
