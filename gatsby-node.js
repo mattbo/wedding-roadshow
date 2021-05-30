@@ -113,3 +113,12 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
   `)
 }
+
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+    actions.setWebpackConfig({
+        resolve: {
+            fallback: {
+                "timers": require.resolve("timers-browserify") }
+        }
+    });
+}

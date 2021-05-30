@@ -1,7 +1,7 @@
 .parallax {
     background-image: url("../images/landscapeNoDot.jpg");
 
-    height: 100%;
+    height: 100vh;
     min-height: 100vh;
 
     background-attachment: fixed;
@@ -13,7 +13,7 @@
 .parallax-dot {
     background-image: url("../images/landscapeWithDot.jpg");
 
-    height: 100%;
+    height: 100vh;
     min-height: 100vh;
 
     background-attachment: fixed;

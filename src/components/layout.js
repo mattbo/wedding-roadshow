@@ -31,7 +31,7 @@ const Layout = ({ location, title, children }) => {
         <Col xs={12} md={3} className="h3">
           <Link to='/registry' itemProp="url">The registry</Link></Col>
         <Col xs={12} md={2} className="h3">
-          <Link to='/blog_top' itemProp="url">The blog</Link></Col>
+          <Link to='/photos' itemProp="url">The photos</Link></Col>
       </Row><Row>
       <div className="global-wrapper" data-is-root-path={isRootPath}>
         <main>{children}</main>
