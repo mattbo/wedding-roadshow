@@ -94,6 +94,8 @@
 
    React.useEffect(() => {
      // firebase = getFirebase();
+     console.log("loading firebase data");
+     console.log(firebase);
      firebase.database()
       .ref("/playlist")
       .on("value", snapshot => {
@@ -148,8 +150,7 @@
        <br />
        <h3>Add your song to our list!</h3>
        <Form onSubmit={doSearch}>
-         <Form.Group controlId="formSearchSpotify">
-
+         <Form.Group>
          <Form.Label htmlFor="track_search">
            Search for a song &nbsp;</Form.Label>
          <Form.Control id="track_search" type="text" sz="lg"

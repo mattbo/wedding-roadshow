@@ -23,15 +23,15 @@ const Layout = ({ location, title, children }) => {
       <Container>
       <Row className="navbar">
         <Col xs={12} md={2} className="h3">
-          <Link to='/' itemProp="url">The idea</Link></Col>
+          <Link to='/' itemProp="url">Idea</Link></Col>
         <Col xs={12} md={2} className="h3">
-          <Link to='/map' itemProp="url">The map</Link></Col>
-        <Col xs={12} md={3} className="h3">
-          <Link to='/playlist' itemProp="url">The playlist</Link></Col>
-        <Col xs={12} md={3} className="h3">
-          <Link to='/registry' itemProp="url">The registry</Link></Col>
+          <Link to='/map' itemProp="url">Map</Link></Col>
         <Col xs={12} md={2} className="h3">
-          <Link to='/photos' itemProp="url">The photos</Link></Col>
+          <Link to='/playlist' itemProp="url">Playlist</Link></Col>
+        <Col xs={12} md={2} className="h3">
+          <Link to='/photos' itemProp="url">Photos</Link></Col>
+        <Col xs={12} md={2} className="h3">
+          <Link to='/registry' itemProp="url">Registry</Link></Col>
       </Row><Row>
       <div className="global-wrapper" data-is-root-path={isRootPath}>
         <main>{children}</main>

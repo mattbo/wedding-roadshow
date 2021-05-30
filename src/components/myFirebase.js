@@ -21,6 +21,7 @@ export default function getFirebase() {
         
         // Variable is only set in .env.development
         if (process.env.FIREBASE_EMULATOR === "1") { 
+            console.log("Using firebase emulator in myFirebase.js")
             instance.database().useEmulator("localhost", 9000);
         }
         return instance;

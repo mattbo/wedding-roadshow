@@ -13,7 +13,7 @@ const RegistryIndex = ({ data, location }) => {
       <br/>
       <p> Our biggest wish on this wedding-road-trip-adventure is to spend time
           with friends and family.  So the ideal gift would be the gift of your
-          time.  Sit with us on the proch or in the park. Show us your favorite
+          time.  Sit with us on the porch or in the park. Show us your favorite
           local spots.  Or just let us park in your driveway and be in your hair          for a few days!  </p>
 
       <p> That said, for friends and family who have expressed an interest,
