@@ -12,7 +12,7 @@
  // import firebase from 'firebase/app';
  import getFirebase from '../components/myFirebase';
  // import 'firebase/database';
- import {getSpotify} from '../components/spotifyApi';
+ import {getSpotify} from '../components/api';
  import SpotifyResults from '../components/spotifyResults';
  import PlaylistTable from '../components/playlistTable';
  import Layout from '../components/layout';

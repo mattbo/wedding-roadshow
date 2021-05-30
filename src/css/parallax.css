@@ -4,10 +4,15 @@
     height: 100vh;
     min-height: 100vh;
 
-    background-attachment: fixed;
-    background-position: center;
+    background-attachment: fixed !important;
+    background-position: center !important;
     background-repeat: no-repeat;
+    background-size: 100%;
+    /*
     background-size: cover;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    */
 }
 
 .parallax-dot {
