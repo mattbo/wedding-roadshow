@@ -13,8 +13,10 @@ const albums = {
    old:  "ACBVj4WnMtckBVj-QOO5TaY5YiL-_MtFFxx89HPVjxkDqAsZ43I5h83mH--UWaup6zliRi9KC-dc"
 }
 
-const galleryUrl = (album) => {
-    return `https://photos.google.com/lr/album/${albums[album]}`; }
+const galleries = {
+    old: 'https://photos.app.goo.gl/cfzqvhYyRZJqDVwAA',
+    road: 'https://photos.app.goo.gl/CScuJ7N5V9YAXYcQ9'
+}
 
 const Photos = ({ data, location }) => {
 
@@ -111,10 +113,10 @@ const Photos = ({ data, location }) => {
       <p> You can visit the galleries and get inspiration from what everyone
           else has uploaded </p>
       <Row><Col md={5}>
-          <Button onClick={ () => {window.open(galleryUrl('old'), "_blank")}}>
+          <Button onClick={ () => {window.open(galleries.old, "_blank")}}>
             Show me fond memories</Button>
       </Col><Col md={{ span: 5, offset: 2}}>
-          <Button onClick={ () => {window.open(galleryUrl('road'), "_blank")}}>
+          <Button onClick={ () => {window.open(galleries.road, "_blank")}}>
             Gimme some Ro' Sho' Pho-to!</Button>
       </Col></Row>
 

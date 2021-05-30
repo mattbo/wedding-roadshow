@@ -9,7 +9,7 @@ const SpotifyResults = ({results, add_callback}) => {
         <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th></th>
+                    <th aria-label="Add to playlist"></th>
                     <th>Track</th>
                     <th>Artist</th>
                     <th>Album</th>

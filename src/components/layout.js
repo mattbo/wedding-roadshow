@@ -1,25 +1,36 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from "react";
+import { Link } from "gatsby";
 import { Container, Row, Col } from "react-bootstrap";
-import logo from "../images/MC_logo.svg"
-import Login from './login'
+import { Parallax } from 'react-parallax';
+import logo from "../images/MC_logo.svg";
+import landscape from "../images/landscapeNoDot.jpg";
+import dotSvg from "../images/roving.svg";
+import Login from './login';
 
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
-  const bgImage = isRootPath ? 'parallax-dot' : 'parallax';
 
-  let header = (
-    <h1 className="main-heading">{title}</h1>
-  )
+  const getParallax = () => { 
+      if (isRootPath) { return (
+          <Parallax blur={0} bgImage={landscape} bgImageAlt="wide open road"
+                             strength={500}>
+              <img alt="it's a roving wedding!" src={dotSvg} />
+          </Parallax>
+      ); }
+      return (
+          <Parallax blur={0} bgImage={landscape} bgImageAlt="wide open road"
+                             strength={500}>
+              <div className="hero-placeholder">
+                <header className="hero-header">{title}</header>
+              </div>
+          </Parallax> );
+  }
 
   return (
     <div>
-      <div className={bgImage} >
-        <header className="hero-header">{header}</header>
-      </div>
-
+      {getParallax()}
       <Container>
       <Row className="navbar">
         <Col xs={12} md={2} className="h3">

@@ -138,21 +138,24 @@ const MyMap = () => {
      <Modal show={showModal} size="lg"
         backdrop="static" centered keyboard="false">
        <Modal.Header>
-         Add to the spot to the map!
+         <h3> Add <em>{placeInfo.name}</em> to the map! </h3>
        </Modal.Header>
        <Modal.Body>
          <Form onSubmit={savePlace}>
-           <Form.Label htmlFor='personName'>What's your name? </Form.Label>
-           <Form.Control id='songPerson' name='person' type='text'
-            onChange={handleModal}
-            default='your name'>
-             </Form.Control>
+           <Form.Group controlId="placePerson">
+             <Form.Label>What's your name? </Form.Label>
+             <Form.Control name='person' type='text'
+              onChange={handleModal}
+              default='your name'>
+             </Form.Control></Form.Group>
              <br/>
-           <Form.Label htmlFor='reason'>Why this spot? </Form.Label>
-           <Form.Control id='placeReason' name='reason' as='textarea' rows={3}
-            onChange={handleModal}
-            placeholder='Go on, tell us the story!'>
-           </Form.Control>
+           <Form.Group controlId="placeReason">
+             <Form.Label>Why this spot? </Form.Label>
+             <Form.Control name='reason' as='textarea' rows={3}
+              onChange={handleModal}
+              placeholder='Go on, tell us the story!'>
+             </Form.Control>
+           </Form.Group>
            <br/>
            <Button onClick={savePlace} className='btn btn-primary'>
              Submit</Button>&nbsp;
@@ -167,58 +170,13 @@ const MyMap = () => {
     return null;
 }
 
-/*
-const SearchMap = ({searchObj, loadModal}) => {
-
-    const [searchResults, setSearchResults] = useState([]);
-    const [searchTerms, setSearchTerms] = useState(null);
-    let placeInfo;
-
-    const doSearch = (evt) => {
-        evt.preventDefault();
-        const terms = searchTerms.value
-        console.log(`Searching for ${terms}`)
-        searchObj.mapService.textSearch({query: terms},
-            (results, status) => {
-                console.log(results);
-                console.log(status);
-                setSearchResults(results);
-        })
-    }
-
-    // called from the MapsResults button
-    const doAdd = (evt) => {
-        placeInfo = {location: evt.target.attributes.place_location,
-            placeName: evt.target.attributes.place_name};
-        loadModal(placeInfo);
-    }
-
-    return (
-      <div>
-        <Form onSubmit={doSearch}>
-            <Form.Group controlId="place_search">
-              <Form.Label>
-                Find your favorite spot!</Form.Label>
-              <Form.Control type="text" sz="lg"
-                  ref={(input) => setSearchTerms(input)} name="search" >
-              </Form.Control>
-              <Button className='btn btn-primary search' onClick={doSearch}>
-                    Search Google Maps</Button>
-            </Form.Group>
-          </Form>
-          <MapsResults results={searchResults} add_callback={doAdd} />
-        </div>
-    );
-}
-*/
-
 const MapsResults = ({results, add_callback}) => {
     if (!results || results.length === 0) { return <div /> }
     return (
         <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th></th>
+                    <th aria-label="Add to map"></th>
                     <th>Name</th>
                     <th>Address</th>
                 </tr>
