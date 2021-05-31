@@ -15,13 +15,15 @@ const Layout = ({ location, title, children }) => {
   const getParallax = () => { 
       if (isRootPath) { return (
           <Parallax blur={0} bgImage={landscape} bgImageAlt="wide open road"
-                             strength={500}>
-              <img alt="it's a roving wedding!" src={dotSvg} />
+                             strength={100}>
+              <div className="hero-placeholder">
+                  <img className="hero-img" alt="it's a roving wedding!" src={dotSvg} />
+              </div>
           </Parallax>
       ); }
       return (
           <Parallax blur={0} bgImage={landscape} bgImageAlt="wide open road"
-                             strength={500}>
+                             strength={100}>
               <div className="hero-placeholder">
                 <header className="hero-header">{title}</header>
               </div>

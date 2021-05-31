@@ -18,6 +18,7 @@
  import Layout from '../components/layout';
  import Seo from '../components/seo';
 
+ const playlistUrl = 'https://open.spotify.com/playlist/4w3iz0Pv77hmxpuzUhPnTN?si=b5fa3e93f54f4008'
  
  const Playlist = ({location, data}) => {
    const [playlistData, setPlaylistData] = React.useState(null);
@@ -144,6 +145,12 @@
         <div className="playlistData">
           <PlaylistTable data={playlistData} />
         </div>
+       </Col> </Row>
+       <Row><Col>
+        <br/>
+        <p>If you have spotify, you can listen to
+           it <a target="_blank" rel="noreferrer" href={playlistUrl}>
+             here</a></p>
        </Col> </Row>
 
        <Row><Col>

@@ -138,7 +138,8 @@ const MyMap = () => {
      <Modal show={showModal} size="lg"
         backdrop="static" centered keyboard="false">
        <Modal.Header>
-         <h3> Add <em>{placeInfo.name}</em> to the map! </h3>
+         <h3> Add <em>{placeInfo ? placeInfo.name: "your spot"}</em>
+              to the map! </h3>
        </Modal.Header>
        <Modal.Body>
          <Form onSubmit={savePlace}>

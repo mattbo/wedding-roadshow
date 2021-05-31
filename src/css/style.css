@@ -457,6 +457,23 @@ header.hero-header {
     height: 100vh;
 }
 
+@media only screen and (max-width:600px) {
+    header.hero-header {
+        font-size: 3rem;
+        top: 90%;
+    }
+}
+
+img.hero-img {
+    height: 50%;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
 div.hero-placeholder {
-    height: 100vh;
+    height: 80vh;
 }
