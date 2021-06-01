@@ -8,7 +8,8 @@ import getFirebase from './myFirebase'
 import "../css/map.css"
 
 const containerStyle = {
-    width: '700px',
+    // width: '700px',
+    width: '100%',
     height: '500px'
 };
 
@@ -138,7 +139,7 @@ const MyMap = () => {
      <Modal show={showModal} size="lg"
         backdrop="static" centered keyboard="false">
        <Modal.Header>
-         <h3> Add <em>{placeInfo ? placeInfo.name: "your spot"}</em>
+         <h3> Add <em>{placeInfo ? placeInfo.name: "your spot"} </em>
               to the map! </h3>
        </Modal.Header>
        <Modal.Body>

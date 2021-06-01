@@ -12,7 +12,7 @@ const MapIndex = ({ data, location }) => {
       <Seo title="The map" />
 
       <p>Yep, there's something for you to do here too.</p>
-      <p>That blue zig-zag on the map below?  That's our plan so far.  The form
+      <p>That black zig-zag on the map below?  That's our plan so far.  The form
           right below it?  That's where you tell us about that one amazing stop
           you think might just be on our way.  Suggest your favorite sandwich in
           your old neighborhood.  Send us on your favorite trail in ____.

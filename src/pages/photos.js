@@ -103,12 +103,16 @@ const Photos = ({ data, location }) => {
       <Seo title="The photos" />
 
       <h4>Were you expecting travel photos?? Sorry! </h4>
-      <p>Instead, we have, just for you, yet another activity! We thought it
-          would be entertaining to gather a photo album of <em>your</em>
+      <p>Instead we have, just for you, yet another activity! We thought it
+          would be entertaining to gather a photo album of <em>your </em>
           favorite pics of <em>us</em>.  </p>
       <p>No hyper-cute, mildly embarrassing snapshots from way back in the day?
           No problem!  You should post something to our roving wedding album
-          instead!  </p>
+          instead.  Or add some photos to both! </p>
+
+      <p style={{'font-size':'0.7rem'}}> Got lots of photos (looking at you,
+          Mom)?  Send Matt an email and he can set you up with direct access via
+          Google Photos... </p>
 
       <p> You can visit the galleries and get inspiration from what everyone
           else has uploaded </p>

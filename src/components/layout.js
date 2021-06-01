@@ -35,15 +35,15 @@ const Layout = ({ location, title, children }) => {
       {getParallax()}
       <Container>
       <Row className="navbar">
-        <Col xs={12} md={2} className="h3">
+        <Col xs={12} md={2} className="h3 main-nav">
           <Link to='/' itemProp="url">Idea</Link></Col>
-        <Col xs={12} md={2} className="h3">
+        <Col xs={12} md={2} className="h3 main-nav">
           <Link to='/map' itemProp="url">Map</Link></Col>
-        <Col xs={12} md={2} className="h3">
+        <Col xs={12} md={2} className="h3 main-nav">
           <Link to='/playlist' itemProp="url">Playlist</Link></Col>
-        <Col xs={12} md={2} className="h3">
+        <Col xs={12} md={2} className="h3 main-nav">
           <Link to='/photos' itemProp="url">Photos</Link></Col>
-        <Col xs={12} md={2} className="h3">
+        <Col xs={12} md={2} className="h3 main-nav">
           <Link to='/registry' itemProp="url">Registry</Link></Col>
       </Row><Row>
       <div className="global-wrapper" data-is-root-path={isRootPath}>
