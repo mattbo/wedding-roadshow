@@ -16,8 +16,8 @@ const RegistryIndex = ({ data, location }) => {
           time.  Sit with us on the porch or in the park. Show us your favorite
           local spots.  Or just let us park in your driveway and be in your hair          for a few days!  </p>
 
-      <p> That said, for friends and family who have expressed an interest,
-           we have registered with a site called honeyfund.</p>
+      <p> For friends and family who have been asking, though,
+          we have also registered with a site called honeyfund.</p>
 
       <a rel="noreferrer" target="_blank" 
          href="https://honeyfund.com/wedding/CharlaandMattGetHitched">

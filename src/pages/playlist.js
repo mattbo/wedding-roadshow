@@ -9,9 +9,9 @@
 
  import * as React from "react";
  import {Modal, Container, Row, Col, Form, Button} from "react-bootstrap";
- // import firebase from 'firebase/app';
+ import Alert from "react-bootstrap/Alert";
+ import Collapse from "react-bootstrap/Collapse";
  import getFirebase from '../components/myFirebase';
- // import 'firebase/database';
  import {getSpotify} from '../components/api';
  import SpotifyResults from '../components/spotifyResults';
  import PlaylistTable from '../components/playlistTable';
@@ -25,6 +25,7 @@
    const [searchResults, setSearchResults] = React.useState(null);
    const [showModal, setShowModal] = React.useState(false);
    const [songInfo, setSongInfo] = React.useState({});
+   const [showAlert, setShowAlert] = React.useState(false);
    // let songUri, songName, songArtist;
    let searchTerms, note={};
 
@@ -53,8 +54,8 @@
    const doAdd = (evt) => {
      // Called after the song is selected.  Grab song info, display modal.
      setSongInfo({songUri: evt.target.attributes.spotify_uri.textContent,
-                  songName: evt.target.attributes.spotify_name.textContent,
-                  songArtist: evt.target.attributes.spotify_artist.textContent});
+                 songName: evt.target.attributes.spotify_name.textContent,
+                 songArtist: evt.target.attributes.spotify_artist.textContent});
      setShowModal(true);
    }
      
@@ -83,6 +84,7 @@
      setSearchResults(null);
      searchTerms = '';
      setShowModal(false);
+     setShowAlert(true);
    }
 
    const handleModal = (evt) => {
@@ -156,6 +158,15 @@
        <Row><Col>
        <br />
        <h3>Add your song to our list!</h3>
+       <Collapse appear={false} in={showAlert} timeout={1000}
+             onEntered={async function() {
+                 await new Promise(r => setTimeout(r, 1000));
+                 setShowAlert(false);
+        }}>
+             <Alert show={showAlert} key="success" variant='success'>
+                Success!  Thanks for the tunes!
+             </Alert>
+       </Collapse>
        <Form onSubmit={doSearch}>
          <Form.Group>
          <Form.Label htmlFor="track_search">

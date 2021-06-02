@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import Collapse from "react-bootstrap/Collapse"
+import Alert from "react-bootstrap/Alert"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import {getGPhotos} from '../components/api';
@@ -26,6 +28,8 @@ const Photos = ({ data, location }) => {
   const albumRef = React.useRef(null);
   const [photo, setPhoto] = React.useState(null);
   const [filename, setFilename] = React.useState("Find a photo");
+  const [showAlert, setShowAlert] = React.useState(false);
+  const alertRef = React.useRef(null);
 
 // this is a request instance, so we can just call .then()
 // to kick off the request.
@@ -89,6 +93,14 @@ const Photos = ({ data, location }) => {
                     console.log("Got mediaItem response")
                     console.log(resp);
                     console.log(err);
+                    console.log("Showing alert at upload complete");
+                    console.log(new Date());
+                    alertRef.current.innerHTML="Success!  Thanks for the pic!";
+                    new Promise(r => setTimeout(r, 1000)).then(() => {
+                        console.log("Closing alert");
+                        console.log(new Date());
+                        setShowAlert(false);
+                    });
                 });
             });
       });
@@ -96,6 +108,7 @@ const Photos = ({ data, location }) => {
       personRef.current.value = '';
       noteRef.current.value = '';
       setFilename('Find a photo');
+      setShowAlert(true)
   }
 
   return (
@@ -103,29 +116,42 @@ const Photos = ({ data, location }) => {
       <Seo title="The photos" />
 
       <h4>Were you expecting travel photos?? Sorry! </h4>
-      <p>Instead we have, just for you, yet another activity! We thought it
-          would be entertaining to gather a photo album of <em>your </em>
-          favorite pics of <em>us</em>.  </p>
-      <p>No hyper-cute, mildly embarrassing snapshots from way back in the day?
-          No problem!  You should post something to our roving wedding album
-          instead.  Or add some photos to both! </p>
+      <p>Instead we have, just for you, yet another activity! </p>
 
-      <p style={{'font-size':'0.7rem'}}> Got lots of photos (looking at you,
+      <p> Ok, yes, we will post photos along the way once we hit the road.
+          In the meantime, though, we thought it
+          would be entertaining to gather some of <em>your </em>
+          favorite pics with us.  </p>
+
+      <p>No hyper-cute, mildly embarrassing snapshots from way back in the day?
+          No problem!  Post a pic or two from our visit with you to 
+          our roving wedding album instead.  Or add some photos to both! </p>
+
+      <p style={{'fontSize':'0.7rem'}}> Got lots of photos (looking at you,
           Mom)?  Send Matt an email and he can set you up with direct access via
           Google Photos... </p>
 
-      <p> You can visit the galleries and get inspiration from what everyone
-          else has uploaded </p>
+      <p> Visit the galleries for inspiration from what everyone
+          else has uploaded, if you like.
+          Then upload a photo and a note below. </p>
+
       <Row><Col md={5}>
-          <Button onClick={ () => {window.open(galleries.old, "_blank")}}>
+          <Button className="photobutton"
+                  onClick={ () => {window.open(galleries.old, "_blank")}}>
             Show me fond memories</Button>
       </Col><Col md={{ span: 5, offset: 2}}>
-          <Button onClick={ () => {window.open(galleries.road, "_blank")}}>
+          <Button className="photobutton"
+                  onClick={ () => {window.open(galleries.road, "_blank")}}>
             Gimme some Ro' Sho' Pho-to!</Button>
       </Col></Row>
 
-      <br />
-      <p> And then, you should upload a photo and a note!</p>
+      <hr />
+      <Collapse in={showAlert} timeout={1000}>
+          <Alert show={showAlert} key="success" variant='success'
+            ref={alertRef}>
+               Uploading...
+          </Alert>
+      </Collapse>
       <Form onSubmit={upload}>
           <Form.File id="photo-file" label={filename} custom 
             onChange={handleFile}/>

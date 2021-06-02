@@ -488,4 +488,8 @@ div.hero-placeholder {
   main > h3,h4,h5 {
       text-align: center;
   }
+  button.photobutton {
+      margin-top: 1rem;
+  }
 }
+

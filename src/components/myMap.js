@@ -4,6 +4,8 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Collapse from 'react-bootstrap/Collapse';
+import Alert from 'react-bootstrap/Alert';
 import getFirebase from './myFirebase'
 import "../css/map.css"
 
@@ -25,6 +27,7 @@ const MyMap = () => {
     const [showModal, setShowModal] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [searchTerms, setSearchTerms] = useState(null);
+    const [showAlert, setShowAlert] = useState(false);
     const searchObj = useRef({});
 
     const firebase = getFirebase();
@@ -67,6 +70,7 @@ const MyMap = () => {
         setShowModal(false);
         setSearchResults([]);
         setSearchTerms(null);
+        setShowAlert(true);
     }
 
     const buildMarker = ({placeLoc, placeName, placePerson, placeReason}) => {
@@ -124,6 +128,15 @@ const MyMap = () => {
               }} />
 
             </GoogleMap>
+        <Collapse appear={false} in={showAlert} timeout={1000}
+              onEntered={async function() {
+                  await new Promise(r => setTimeout(r, 1000));
+                  setShowAlert(false);
+         }}>
+              <Alert show={showAlert} key="success" variant='success'>
+                 Success!  Thanks for the tip!
+              </Alert>
+        </Collapse>
         <Form onSubmit={doSearch}>
             <Form.Group controlId="place_search">
               <Form.Label>
