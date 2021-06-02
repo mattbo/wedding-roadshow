@@ -1,22 +1,32 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { Modal, Form, Button, Row, Col} from "react-bootstrap";
+import { Modal, Form, Button, Collapse, Alert} from "react-bootstrap";
 import { handleLogin, isLoggedIn } from "../services/auth"
 
 class Login extends React.Component {
   state = {
     password: ``,
+    showAlert: false
+  }
+
+  constructor(props) {
+      super(props);
+      this.passwdRef = React.createRef();
   }
 
   handleUpdate = event => {
     this.setState({
       [event.target.name]: event.target.value,
+      showAlert: false
     })
   }
 
   handleSubmit = event => {
     event.preventDefault()
-    handleLogin(this.state)
+    if (!handleLogin(this.state)) {
+        this.passwdRef.current.value = '';
+        this.setState({showAlert: true});
+    }
   }
 
   render() {
@@ -36,6 +46,11 @@ class Login extends React.Component {
         <p> The password is somewhere on the announcement (paper or email) </p>
         <p>... keep looking...  </p>
         <p>... I have faith in you... </p>
+        <Collapse appear={false} in={this.state.showAlert} timeout={1000}>
+             <Alert show={this.state.showAlert} key="danger" variant='danger'>
+                Nope, that ain't right.  Try again...
+             </Alert>
+        </Collapse>
         <Form
           method="post"
           onSubmit={event => {
@@ -44,6 +59,7 @@ class Login extends React.Component {
           }}
         >
             <Form.Control
+              ref={this.passwdRef}
               size="lg"
               type="password"
               name="password"
@@ -54,8 +70,6 @@ class Login extends React.Component {
             <Button size="lg" type="submit" block variant="primary">
                 Log In
             </Button>
-          <Row><Col md={{ span: 4, offset: 4 }}>
-          </Col></Row>
         </Form>
        </Modal.Body>
      </Modal>

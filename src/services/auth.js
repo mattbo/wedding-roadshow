@@ -13,11 +13,10 @@ const setUser = user =>
 
 export const handleLogin = ({ password }) => {
   if (password.toLowerCase() === PASS.toLowerCase()) {
-    return setUser({
-      username: `anon`,
-    })
+    setUser({ username: `anon`, })
+    return true
   }
-  return false
+  return false;
 }
 
 export const isLoggedIn = () => {
