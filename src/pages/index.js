@@ -40,7 +40,7 @@ const MainPage = ({ data, location }) => {
 
 
     <h3>The plan</h3>
-    <p>The official official and the signing of documents will happen in July
+    <p>The official words and the signing of documents will happen in July
     with our immediate family, followed by some celebrating in SoCal. In August
     we hit the road. The western US will happen in late summer / autumn 
     <span className="strikethrough"> 2020 </span> 2021. After a few months
@@ -51,7 +51,7 @@ const MainPage = ({ data, location }) => {
 
     <p>Along the way we want to stop and see you, hear all about how you are,
     and revel in the fact that we are not on Zoom. And maybe, one of us two will
-    beat the other one to their 50th state.  And if we are extra lucky, 
+    beat the other one to their 50th state.  And if we are extra, extra lucky, 
     we'll take a couple of sabbaticals to Hanoi and Bogota. </p>
 
     <p>We know, it’s a tough life. Just remember, we’re doing it for you. </p>

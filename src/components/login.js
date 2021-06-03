@@ -48,7 +48,7 @@ class Login extends React.Component {
         <p>... I have faith in you... </p>
         <Collapse appear={false} in={this.state.showAlert} timeout={1000}>
              <Alert show={this.state.showAlert} key="danger" variant='danger'>
-                Nope, that ain't right.  Try again...
+                Nope, that ain't right.  Hint: spaces and punctuation matter!
              </Alert>
         </Collapse>
         <Form
