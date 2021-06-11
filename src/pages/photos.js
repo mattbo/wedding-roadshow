@@ -35,15 +35,12 @@ const Photos = ({ data, location }) => {
 // to kick off the request.
 
   const handleFile = (evt) => { 
-      console.log(`Album: ${albumRef.current.value}`);
       const file = evt.target.files[0];
-      console.log(file);
       setFilename(file.name);
       setPhoto(file);
   }
 
   const upload = (evt) => {
-      console.log("uploading???")
       if (typeof(window) === undefined) { return null; }
 
       const description = `${personRef.current.value} ` +
@@ -52,8 +49,6 @@ const Photos = ({ data, location }) => {
       const media_url =
           'https://photoslibrary.googleapis.com/v1/mediaItems:batchCreate';
       
-      console.log(`Posting to album ${albumRef.current.value}`);
-
       // Get the access token
       getGPhotos().then(token => {
           fetch(upload_url, {
@@ -90,15 +85,8 @@ const Photos = ({ data, location }) => {
                                 }
                             }]})
                 }).then((resp, err) => {
-                    console.log("Got mediaItem response")
-                    console.log(resp);
-                    console.log(err);
-                    console.log("Showing alert at upload complete");
-                    console.log(new Date());
                     alertRef.current.innerHTML="Success!  Thanks for the pic!";
                     new Promise(r => setTimeout(r, 1000)).then(() => {
-                        console.log("Closing alert");
-                        console.log(new Date());
                         setShowAlert(false);
                     });
                 });

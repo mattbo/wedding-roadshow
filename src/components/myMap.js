@@ -58,13 +58,16 @@ const MyMap = () => {
 
     const savePlace = (evt) => {
         evt.preventDefault();
+        const timestamp = new Date();
         const loc = { lat: placeInfo.geometry.location.lat(),
                       lng: placeInfo.geometry.location.lng() };
         const entry = firebase.database().ref("/map_points").push();
         const placeObj = {placeLoc: loc,
                           placeName: placeInfo.name,
                           placePerson: note.person,
-                          placeReason: note.reason};
+                          placeReason: note.reason,
+                          testing: "yep",
+                          creationDate: timestamp.toJSON() };
         entry.set(placeObj);
         buildMarker(placeObj);
         setShowModal(false);

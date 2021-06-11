@@ -67,20 +67,19 @@
    const saveSong = (evt) => {
      // Called from the modal submit; add to spotify and firebase.
      evt.preventDefault();
-     console.log("Adding to playlist & firebase: ")
-     console.log(songInfo.songName);
-     console.log(songInfo.songUri);
-     console.log(songInfo.songArtist);
-     console.log(note.person);
-     console.log(note.reason);
      getSpotify().then(spotify => {
         spotify.addTracksToPlaylist(
            process.env.SPOTIFY_PLAYLISTURI,
            [songInfo.songUri]);
      });
+     const timestamp = new Date()
      const entry = firebase.database().ref("/playlist").push();
-     entry.set({songName: songInfo.songName, songArtist: songInfo.songArtist, 
-             songPerson: note.person, songReason: note.reason});
+     entry.set({
+               songName: songInfo.songName,
+               songArtist: songInfo.songArtist,
+               songPerson: note.person,
+               songReason: note.reason,
+               creationDate: timestamp.toJSON()});
      setSearchResults(null);
      searchTerms = '';
      setShowModal(false);
