@@ -41,14 +41,17 @@ const MainPage = ({ data, location }) => {
         idea.  And now it's actually happening.</p>
 
       <h3>The plan</h3>
-      <p>The saying of the official words and the signing of documents will happen
-        in July with our immediate family, followed by some celebrating in SoCal. In
-        August we hit the road. The western US will happen in late summer / autumn 
-        <span className="strikethrough"> 2020 </span> 2021. After a few months
-        snowbirding in the South we’ll make our way up the East Coast in
-        Spring <span className="strikethrough">2021</span> 2022. Early summer we’ll
-        cross into Canada and make our way back to the Midwest and end the tour in
-        Wisconsin in Summer <span className="strikethrough">2021</span> 2022! </p>
+      <p>The saying of the official words and the signing of documents <span
+          className='strikethrough'>will happen in July </span> happened on July
+          7, 2021 with our immediate family, followed by some celebrating in
+          SoCal. On August 11, 2021 we hit the road. The western US will happen
+          in late summer / autumn <span className="strikethrough"> 2020 </span>
+          2021. After a few months snowbirding in the South we’ll make our way
+          up the East Coast in Spring <span
+          className="strikethrough">2021</span> 2022. Early summer we’ll cross
+          into Canada and make our way back to the Midwest and end the tour in
+          Wisconsin in Summer <span className="strikethrough">2021</span> 2022!
+      </p>
 
       <p>Along the way we want to stop and see you, hear all about how you are,
         and revel in the fact that we are not on Zoom. No formal affairs of

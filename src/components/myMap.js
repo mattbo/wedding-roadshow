@@ -120,7 +120,19 @@ const MyMap = () => {
                   searchObj.current.mapRef = map;
                   searchObj.current.mapService = new global.google.maps.places
                       .PlacesService(searchObj.current.mapRef);
-                  map.data.loadGeoJson("/wedding_route.json");
+
+                  // Load the GeoJson for the route.  Each section will have
+                  // a 'name' property set to either 'past' or 'future'
+                  map.data.loadGeoJson("/wedding_path.json");
+
+                  // Switch on the 'name' property to style the line
+                  map.data.setStyle(function(feature) {
+                      if (feature.getProperty('name') === 'past') { 
+                          return {'strokeColor': 'red'};
+                      } else { 
+                          return {'strokeColor': 'green'} ;
+                      }
+                  });
                   console.log(markerData.current);
                   Object.values(markerData.current).forEach(
                         m => buildMarker(m) ); 

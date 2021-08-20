@@ -11,13 +11,15 @@ import Seo from "../components/seo"
 import {getGPhotos} from '../components/api';
 
 const albums = {
-   road: "ACBVj4XmZEW-2Pl704uDw4Rp-V6oHcwWXXdLACc7GjvSVexaYrxHG1Yrtwog6i3itjx9MDQd8jSc",
-   old:  "ACBVj4WnMtckBVj-QOO5TaY5YiL-_MtFFxx89HPVjxkDqAsZ43I5h83mH--UWaup6zliRi9KC-dc"
+   wedding: "ACBVj4XmZEW-2Pl704uDw4Rp-V6oHcwWXXdLACc7GjvSVexaYrxHG1Yrtwog6i3itjx9MDQd8jSc",
+   old:  "ACBVj4WnMtckBVj-QOO5TaY5YiL-_MtFFxx89HPVjxkDqAsZ43I5h83mH--UWaup6zliRi9KC-dc",
+   road: "ACBVj4VXaCj1aYRTkrNDKRx2Ixc-Mth1VS1n0juBY1clCbZk7U8PK_PPXIYGk_Mj3tqKyPvLSSHj"
 }
 
 const galleries = {
     old: 'https://photos.app.goo.gl/cfzqvhYyRZJqDVwAA',
-    road: 'https://photos.app.goo.gl/CScuJ7N5V9YAXYcQ9'
+    wedding: 'https://photos.app.goo.gl/CScuJ7N5V9YAXYcQ9',
+    road: 'https://photos.app.goo.gl/acoC7LoocWrjYtza7'
 }
 
 const Photos = ({ data, location }) => {
@@ -99,21 +101,52 @@ const Photos = ({ data, location }) => {
       setShowAlert(true)
   }
 
+  // Used in development; GPhotos API can only write to albums that were
+  // created by the API (?!?)
+  /*
+  <Button className='btn btn-primary' onClick={makeAlbum}>New</Button>
+  const makeAlbum = () => { 
+      console.log("making album")
+
+      if (typeof(window) === undefined) { return null; }
+
+      const album_url = 'https://photoslibrary.googleapis.com/v1/albums';
+      
+      getGPhotos().then(token => {
+          fetch(album_url, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${token}`
+              },
+              mode: 'cors',
+              body: JSON.stringify({
+                "album": { "title": "A Mat-Cha made in heaven" }
+              })
+            }).then((resp, err) => { 
+                console.log("Got response from google");
+                console.log(resp);
+                return resp.json();
+            }).then( album => {
+                console.log(album);
+            });
+      });
+  }
+  */
+
+
   return (
     <Layout location={location} title="The photos">
       <Seo title="The photos" />
 
-      <h4>Were you expecting travel photos?? Sorry! </h4>
-      <p>Instead we have, just for you, yet another activity! </p>
+      <h4> We'll show you ours if you show us yours! </h4> 
+      <p>That's right, it's interactive! </p>
 
-      <p> Ok, yes, we will post photos along the way once we hit the road.
-          In the meantime, though, we thought it
-          would be entertaining to gather some of <em>your </em>
-          favorite pics with us.  </p>
+      <p> Click on the blue buttons below to get to any of three albums... AND use the form at the bottom to share your pictures with us (and all the other "guests")!</p>
 
       <p>No hyper-cute, mildly embarrassing snapshots from way back in the day?
-          No problem!  Post a pic or two from our visit with you to 
-          our roving wedding album instead.  Or add some photos to both! </p>
+          No problem!  Post a pic or two from our visit with you to &nbsp;
+          <em>Road trip shots</em> instead.  Or add some photos to both! </p>
 
       <p style={{'fontSize':'0.7rem'}}> Got lots of photos (looking at you,
           Mom)?  Send Matt an email and he can set you up with direct access via
@@ -123,14 +156,19 @@ const Photos = ({ data, location }) => {
           else has uploaded, if you like.
           Then upload a photo and a note below. </p>
 
-      <Row><Col md={5}>
+      <Row><Col md={4}>
+          <Button className="photobutton"
+                  onClick={ () => {window.open(galleries.wedding, "_blank")}}>
+            Wedding photos</Button>
+      </Col>
+      <Col md={4}>
           <Button className="photobutton"
                   onClick={ () => {window.open(galleries.old, "_blank")}}>
-            Show me fond memories</Button>
-      </Col><Col md={{ span: 5, offset: 2}}>
+            Fond memories</Button>
+      </Col><Col md={{ span: 4, offset: 0}}>
           <Button className="photobutton"
                   onClick={ () => {window.open(galleries.road, "_blank")}}>
-            Gimme some Ro' Sho' Pho-to!</Button>
+            Road trip shots</Button>
       </Col></Row>
 
       <hr />
@@ -174,39 +212,6 @@ const Photos = ({ data, location }) => {
         </Form>
     </Layout>
   )
-
-  // Used in development; GPhotos API can only write to albums that were
-  // created by the API (?!?)
-  /*
-  const makeAlbum = () => { 
-      console.log("making album")
-
-      if (typeof(window) === undefined) { return null; }
-
-      const album_url = 'https://photoslibrary.googleapis.com/v1/albums';
-      
-      getGPhotos().then(token => {
-          fetch(album_url, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${token}`
-              },
-              mode: 'cors',
-              body: JSON.stringify({
-                "album": { "title": "A Mat-Cha made in heaven" }
-              })
-            }).then((resp, err) => { 
-                console.log("Got response from google");
-                console.log(resp);
-                return resp.json();
-            }).then( album => {
-                console.log(album);
-            });
-      });
-  }
-  */
-
 }
 
 export default Photos
