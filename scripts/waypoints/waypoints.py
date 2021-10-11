@@ -46,23 +46,29 @@ past = [
     'Honey Bear by the Sea RV Resort and Campground, ' +
     '34161 Ophir Rd, Gold Beach, OR 97444',
     '87419 Stewart Ln, Bandon, OR 97411',
+    'Charleston, OR 97420',
     'Umpqua Lighthouse State Park, Reedsport, OR 97467',
     'Beachside State Park, Waldport, OR 97394',
-    'Corvallis, OR'
+    'Corvallis, OR',
+    'Newport, OR',
+    'Pacific City, OR',
+    'Netarts, OR',
+    'Tillamook, OR',
+    'Portland, OR',
+    'Roots Wine Company, 19320 NE Woodland Loop Rd, Yamhill, OR 97148',
+    'Nehalem Bay State Park, OR',
+    'Cannon Beach, OR',
+    'Seaside, OR',
+    'Astoria, OR',
+    'Greyland State Beach, WA'
 ]
 
 future = [
-    'Newport, OR',
-    'Tillamook, OR',
-    'Portland, OR',
-    'Cannon Beach, OR',
-    'Astoria, OR',
-    'Cape Disappointment State Park, WA',
-    'Raymond, WA',
+    'Millersylvania State Park, 12245 Tilley Rd SW, Olympia, WA 98512',
     'Olympia, WA',
-    'Ballard, WA',
+    'Lake City, WA',
     'Leavenworth, WA',
-    "Coeur D'Alene",
+    "Coeur D'Alene, ID",
     'Sandpoint, ID',
     'Missoula, MT',
     'Jackson, WY',
@@ -106,10 +112,10 @@ future = [
 route_writer = writer.Writer()
 for idx in range(len(past)-1):
     route_writer.query(past[idx], past[idx+1], custom_label='past')
-    print(f"Finished {past[idx+1]} to {past[idx]}")
+    print(f"Finished {past[idx]} to {past[idx+1]}")
 
 for idx in range(len(future)-1):
     route_writer.query(future[idx], future[idx+1], custom_label='future')
-    print(f"Finished {future[idx+1]} to {future[idx]}")
+    print(f"Finished {future[idx]} to {future[idx+1]}")
 
 route_writer.save("wedding_path.geojson")
