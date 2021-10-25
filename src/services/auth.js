@@ -1,7 +1,7 @@
 export const isBrowser = () => typeof window !== "undefined"
 
-const PASS = "Let The Good Times Roll!";
-const lsKey = "wedding_gatsby_user";
+const PASS = process.env.AUTH_PASSWORD;
+const lsKey = process.env.AUTH_LOCALSTORAGE_KEY;
 
 export const getUser = () =>
   isBrowser() && window.localStorage.getItem(lsKey)
