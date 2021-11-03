@@ -76,7 +76,8 @@ const MyMap = () => {
         setShowAlert(true);
     }
 
-    const buildMarker = ({placeLoc, placeName, placePerson, placeReason}) => {
+    const buildMarker = ({placeLoc, placeName, placePerson,
+                          placeReason, visited}) => {
         const noteStr = `<h3>${placeName}</h3>` +
                 `<p><em>${placePerson} says:</em></p>` +
                 `<p>${placeReason}</p>`;
@@ -84,6 +85,7 @@ const MyMap = () => {
         const m = new global.google.maps.Marker({
             position: placeLoc,
             map: searchObj.current.mapRef,
+            color: visited ? "green" : "blue",
             title: placeName});
         m.addListener("click", () => { iw.open(searchObj.current.mapRef, m); });
     }
