@@ -105,19 +105,24 @@ past = [
     'Priest River, ID',
     'Sagle, ID',
     'Sandpoint, ID',
-    'Sagle, ID'
-
-]
-
-future = [
     'Sagle, ID',
     'Thompson Falls, MT',
     'Missoula, MT',
     'Jackson Hot Springs, MT',
     'Bozeman Hot Springs, MT',
     'Yellowstone National Park North Entrance, MT',
+    'Mammoth Hot Springs Hotel, Yellowstone, WY 82190',
+    'Bozeman, MT',
     'Jackson, WY',
-    'Rock Springs, WY',
+    'Taggart Lake Trailhead, Alta, WY 83414',
+    'Jackson, WY',
+    'Mustang Ridge Campground, Dutch John, UT 84023',
+    'Ashley National Forest, US-191, Dutch John, UT 84023',
+    'Cub Creek Petroglyphs, Jensen, UT 84035',
+    'Aspen, CO'
+]
+
+future = [
     'Aspen, CO',
     'Fort Collins, CO',
     'Boulder, CO',
