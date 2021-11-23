@@ -7,20 +7,21 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
- import * as React from "react";
- import {Modal, Container, Row, Col, Form, Button} from "react-bootstrap";
- import Alert from "react-bootstrap/Alert";
- import Collapse from "react-bootstrap/Collapse";
- import getFirebase from '../components/myFirebase';
- import {getSpotify} from '../components/api';
- import SpotifyResults from '../components/spotifyResults';
- import PlaylistTable from '../components/playlistTable';
- import Layout from '../components/layout';
- import Seo from '../components/seo';
+import * as React from "react";
+import {Modal, Container, Row, Col, Form, Button} from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
+import Collapse from "react-bootstrap/Collapse";
+import getFirebase from '../components/myFirebase';
+import { ref, onValue, set, push } from 'firebase/database';
+import {getSpotify} from '../components/api';
+import SpotifyResults from '../components/spotifyResults';
+import PlaylistTable from '../components/playlistTable';
+import Layout from '../components/layout';
+import Seo from '../components/seo';
 
- const playlistUrl = 'https://open.spotify.com/playlist/4w3iz0Pv77hmxpuzUhPnTN?si=b5fa3e93f54f4008'
+const playlistUrl = 'https://open.spotify.com/playlist/4w3iz0Pv77hmxpuzUhPnTN?si=b5fa3e93f54f4008'
  
- const Playlist = ({location, data}) => {
+const Playlist = ({location, data}) => {
    const [playlistData, setPlaylistData] = React.useState(null);
    const [searchResults, setSearchResults] = React.useState(null);
    const [showModal, setShowModal] = React.useState(false);
@@ -73,8 +74,10 @@
            [songInfo.songUri]);
      });
      const timestamp = new Date()
-     const entry = firebase.database().ref("/playlist").push();
-     entry.set({
+     // const entry = firebase.database().ref("/playlist").push();
+     const entry = push(ref(firebase.db, "/playlist"));
+     // entry.set({
+     set(entry, {
                songName: songInfo.songName,
                songArtist: songInfo.songArtist,
                songPerson: note.person,
@@ -98,9 +101,11 @@
      // firebase = getFirebase();
      console.log("loading firebase data");
      console.log(firebase);
-     firebase.database()
-      .ref("/playlist")
-      .on("value", snapshot => {
+     // firebase.database()
+     //   .ref("/playlist")
+     //   .on("value", snapshot => {
+     let songRef = ref(firebase.db, "/playlist");
+     onValue(songRef, (snapshot) => {
         //MSB -- change this to append rather than set.
         console.log(snapshot.val());
         setPlaylistData(snapshot.val())
@@ -209,6 +214,6 @@
      </Layout>
    )
  
- }
+}
 
 export default Playlist

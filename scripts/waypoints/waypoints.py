@@ -69,6 +69,7 @@ past = [
     'Tacoma, WA',
     'Olympia, WA',
     'Millersylvania State Park, 12245 Tilley Rd SW, Olympia, WA 98512',
+    'Aberdeen, WA',
     'Olympia, WA',
     'Woodinville, WA',
     'Lake Forest Park, WA',

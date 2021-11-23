@@ -179,7 +179,7 @@ const Photos = ({ data, location }) => {
           </Alert>
       </Collapse>
       <Form onSubmit={upload}>
-          <Form.File id="photo-file" label={filename} custom 
+          <Form.Control type="file" id="photo-file" label={filename}
             onChange={handleFile}/>
            <br/> <br/>
           <Form.Label htmlFor='personName'>What's your name? </Form.Label>
@@ -189,7 +189,7 @@ const Photos = ({ data, location }) => {
             </Form.Control>
            <br/>
           <Form.Label htmlFor='galleryChoice'>Post this in</Form.Label>
-          <Form.Control as="select" custom
+          <Form.Control as="select"
            ref={(input) => albumRef.current = input} >
             <option value="old">Fond memories</option>
             <option value="road">Rovin' wedding</option>

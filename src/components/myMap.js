@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import Collapse from 'react-bootstrap/Collapse';
 import Alert from 'react-bootstrap/Alert';
 import getFirebase from './myFirebase'
+import { ref, onValue, set, push } from 'firebase/database';
 import "../css/map.css"
 
 const containerStyle = {
@@ -33,9 +34,8 @@ const MyMap = () => {
     const firebase = getFirebase();
 
     useEffect(() => {
-     firebase.database()
-      .ref("/map_points")
-      .on("value", snapshot => {
+      let mapPointRef = ref(firebase.db, "/map_points");
+      onValue(mapPointRef, (snapshot) => {
         console.log(snapshot.val());
         markerData.current = (snapshot.val() || []);
         if ("mapRef" in searchObj.current) {
@@ -61,14 +61,16 @@ const MyMap = () => {
         const timestamp = new Date();
         const loc = { lat: placeInfo.geometry.location.lat(),
                       lng: placeInfo.geometry.location.lng() };
-        const entry = firebase.database().ref("/map_points").push();
+        // const entry = firebase.database().ref("/map_points").push();
+        const entry = push(ref(firebase.db, '/map_points'))
         const placeObj = {placeLoc: loc,
                           placeName: placeInfo.name,
                           placePerson: note.person,
                           placeReason: note.reason,
                           testing: "yep",
                           creationDate: timestamp.toJSON() };
-        entry.set(placeObj);
+        //entry.set(placeObj);
+        set(entry, placeObj);
         buildMarker(placeObj);
         setShowModal(false);
         setSearchResults([]);

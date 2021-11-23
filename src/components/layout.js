@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { Container, Row, Col } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { Parallax } from 'react-parallax';
 import logo from "../images/MC_logo.svg";
 import landscape from "../images/landscapeNoDot.jpg";
@@ -45,9 +47,11 @@ const Layout = ({ location, title, children }) => {
           <Link to='/photos' itemProp="url">Photos</Link></Col>
         <Col xs={12} md={2} className="h3 main-nav">
           <Link to='/registry' itemProp="url">Registry</Link></Col>
-      </Row><Row>
-      <div className="global-wrapper" data-is-root-path={isRootPath}>
-        <main>{children}</main>
+      </Row>
+      <Row className="global-wrapper" data-is-root-path={isRootPath}>
+        <Col md={{ span: 8, offset: 2 }}>
+          <main>{children}</main>
+        </Col>
         <footer>
          <p>
            <img width="60px" src={logo} alt="Matt and Charla logo"/> &nbsp;
@@ -56,7 +60,6 @@ const Layout = ({ location, title, children }) => {
           © {new Date().getFullYear()}, Built with
           {` `} <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
-      </div>
       </Row></Container>
       <Login />
     </div>
