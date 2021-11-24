@@ -25,7 +25,8 @@ const galleries = {
 const Photos = ({ data, location }) => {
 
   const noteRef = React.useRef(null);
-  const nameRef = React.useRef(null);
+  //const nameRef = React.useRef(null);
+  const [photoTitle, setPhotoTitle] = React.useState('');
   const personRef = React.useRef(null);
   const albumRef = React.useRef(null);
   const [photo, setPhoto] = React.useState(null);
@@ -42,8 +43,9 @@ const Photos = ({ data, location }) => {
       setPhoto(file);
   }
 
+  const isBrowser = typeof window !== "undefined";
   const upload = (evt) => {
-      if (typeof(window) === undefined) { return null; }
+      if (!isBrowser) { return null; }
 
       const description = `${personRef.current.value} ` +
         `says: ${noteRef.current.value}`;
@@ -56,9 +58,11 @@ const Photos = ({ data, location }) => {
           fetch(upload_url, {
               method: 'POST',
               headers: {
-                  'Content-Type': 'application/octet-stream',
-                  'X-Goog-Upload-File-Name': nameRef.current.value,
-                  'X-Goog-Upload-Protocol': "raw",
+                  'content-type': 'application/octet-stream',
+                  // 'x-goog-upload-file-name': nameRef.current.value,
+                  'x-goog-upload-file-name': photoTitle.value,
+                  'x-goog-upload-protocol': "raw",
+                  'x-goog-upload-content-type': photo.type,
                   Authorization: `Bearer ${token}`
               },
               mode: 'cors',
@@ -82,7 +86,7 @@ const Photos = ({ data, location }) => {
                             {
                                 "description": description,
                                 "simpleMediaItem": {
-                                    "fileName": nameRef.current.value,
+                                    "fileName": photoTitle.value,
                                     "uploadToken": imgToken
                                 }
                             }]})
@@ -94,7 +98,8 @@ const Photos = ({ data, location }) => {
                 });
             });
       });
-      nameRef.current.value = '';
+      // nameRef.current.value = '';
+      setPhotoTitle('');
       personRef.current.value = '';
       noteRef.current.value = '';
       setFilename('Find a photo');
@@ -140,21 +145,6 @@ const Photos = ({ data, location }) => {
       <Seo title="The photos" />
 
       <h4> We'll show you ours if you show us yours! </h4> 
-      <p>That's right, it's interactive! </p>
-
-      <p> Click on the blue buttons below to get to any of three albums... AND use the form at the bottom to share your pictures with us (and all the other "guests")!</p>
-
-      <p>No hyper-cute, mildly embarrassing snapshots from way back in the day?
-          No problem!  Post a pic or two from our visit with you to &nbsp;
-          <em>Road trip shots</em> instead.  Or add some photos to both! </p>
-
-      <p style={{'fontSize':'0.7rem'}}> Got lots of photos (looking at you,
-          Mom)?  Send Matt an email and he can set you up with direct access via
-          Google Photos... </p>
-
-      <p> Visit the galleries for inspiration from what everyone
-          else has uploaded, if you like.
-          Then upload a photo and a note below. </p>
 
       <Row><Col md={4}>
           <Button className="photobutton"
@@ -170,6 +160,22 @@ const Photos = ({ data, location }) => {
                   onClick={ () => {window.open(galleries.road, "_blank")}}>
             Road trip shots</Button>
       </Col></Row>
+
+      <p>That's right, it's interactive! </p>
+
+      <p> Click on the blue buttons above to get to any of three albums... AND use the form at the bottom to share your pictures with us (and all the other "guests")!</p>
+
+      <p>No hyper-cute, mildly embarrassing snapshots from way back in the day?
+          No problem!  Post a pic or two from our visit with you to &nbsp;
+          <em>Road trip shots</em> instead.  Or add some photos to both! </p>
+
+      <p style={{'fontSize':'0.7rem'}}> Got lots of photos (looking at you,
+          Mom)?  Send Matt an email and he can set you up with direct access via
+          Google Photos... </p>
+
+      <p> Visit the galleries for inspiration from what everyone
+          else has uploaded, if you like.
+          Then upload a photo and a note below. </p>
 
       <hr />
       <Collapse in={showAlert} timeout={1000}>
@@ -197,7 +203,8 @@ const Photos = ({ data, location }) => {
            <br/> <br/>
           <Form.Label htmlFor='photoName'>Title for the photo</Form.Label>
           <Form.Control id='photoName' name='photoName' type='text'
-           ref={(input) => nameRef.current = input} 
+           // ref={(input) => nameRef.current = input} 
+           ref={(input) => setPhotoTitle(input)} 
            default='Embarassing Photo #12'>
             </Form.Control>
            <br/>

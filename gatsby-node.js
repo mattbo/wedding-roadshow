@@ -114,11 +114,24 @@ exports.createSchemaCustomization = ({ actions }) => {
   `)
 }
 
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     actions.setWebpackConfig({
         resolve: {
             fallback: {
                 "timers": require.resolve("timers-browserify") }
         }
     });
+    // don't build firebase during SSR
+    if (stage === 'build-html' || stage === 'develop-html') {
+        actions.setWebpackConfig({
+            module: {
+                rules: [
+                    {
+                        test: /firebase/,
+                        use: loaders.null(),
+                    }
+                ]
+            }
+        })
+    }
 }
