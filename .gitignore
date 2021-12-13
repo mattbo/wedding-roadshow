@@ -71,3 +71,6 @@ yarn-error.log
 # Python
 **/venv
 **/__pycache__
+
+# Intermediate map files
+**/__map_files

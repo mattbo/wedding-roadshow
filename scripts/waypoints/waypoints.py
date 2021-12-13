@@ -1,5 +1,11 @@
 
+import json
 import writer
+import os.path
+from pathlib import Path
+
+OUTFILE = 'wedding_path.geojson'
+MAP_FILES = '__map_files'
 
 past = [
     'Copley Ave and Idaho St, San Diego, CA 92116',
@@ -119,17 +125,23 @@ past = [
     'Mustang Ridge Campground, Dutch John, UT 84023',
     'Ashley National Forest, US-191, Dutch John, UT 84023',
     'Cub Creek Petroglyphs, Jensen, UT 84035',
-    'Aspen, CO'
-]
-
-future = [
     'Aspen, CO',
     'Fort Collins, CO',
     'Boulder, CO',
     'Cheyenne Mountain State Park, CO',
     'Taos, NM',
     'Santa Fe, NM',
+    'Las Cruces, NM',
     'White Sands National Monument, NM',
+    'Oliver Lee Start Park, NM'
+]
+
+future = [
+    'Oliver Lee Start Park, NM',
+    'Guadalupe Mountains State Park, NM',
+    'Carlsbad Caverns, Carlsbad, NM',
+    'Marfa, TX',
+    'Big Bend National Park, TX',
     'Austin, TX',
     'Galveston, TX',
     'New Orleans, LA',
@@ -164,13 +176,54 @@ future = [
     'Watertown WI',
 ]
 
-route_writer = writer.Writer()
-for idx in range(len(past)-1):
-    route_writer.query(past[idx], past[idx+1], custom_label='past')
-    print(f"Finished {past[idx]} to {past[idx+1]}")
 
-for idx in range(len(future)-1):
-    route_writer.query(future[idx], future[idx+1], custom_label='future')
-    print(f"Finished {future[idx]} to {future[idx+1]}")
+def gen_filename(start, end, idx):
+    s = start[:10].replace(', ', '_').replace(' ', '_').replace(',', '_')
+    e = end[:10].replace(', ', '_').replace(' ', '_').replace(',', '_')
+    return (f"{idx:0>5}_{s}_to_{e}")
 
-route_writer.save("wedding_path.geojson")
+
+for p_idx in range(len(past)-1):
+    fname = gen_filename(past[p_idx], past[p_idx+1], p_idx)
+    if(not os.path.exists(os.path.join(MAP_FILES, fname))):
+        route_writer = writer.Writer()
+        route_writer.query(past[p_idx], past[p_idx+1], custom_label='past')
+        p = list(Path(MAP_FILES).glob(f"{fname[:fname.index('_')]}_*"))
+        if len(p) > 0:
+            print(f"Removing expired files:\n{p}")
+            [f.unlink() for f in p]
+        p = list(Path(MAP_FILES).glob(f"*{fname[fname.index('_'):]}"))
+        if len(p) > 0:
+            print(f"Removing travelled files:\n{p}")
+            [f.unlink() for f in p]
+        route_writer.save(os.path.join(MAP_FILES, fname))
+
+    print(f"Finished {past[p_idx]} to {past[p_idx+1]}")
+
+f_start = len(past) + 10000
+print(f"f_start : {f_start})")
+for f_idx in range(len(future)-1):
+    fname = gen_filename(future[f_idx], future[f_idx+1], f_start+f_idx)
+    if(not os.path.exists(os.path.join(MAP_FILES, fname))):
+        route_writer = writer.Writer()
+        route_writer.query(future[f_idx], future[f_idx+1],
+                           custom_label='future')
+        p = list(Path(MAP_FILES).glob(f"{fname[:fname.index('_')]}_*"))
+        if len(p) > 0:
+            print(f"Removing expired files:\n{p}")
+            [f.unlink() for f in p]
+        route_writer.save(os.path.join(MAP_FILES, fname))
+
+    print(f"Finished {future[f_idx]} to {future[f_idx+1]}")
+
+p = Path(MAP_FILES)
+files = sorted(list(p.glob("[0-9][0-9][0-9][0-9][0-9]_*")))
+geojson = {"type": "FeatureCollection", "features": []}
+for f in files:
+    print(f"appending {f}")
+    with open(f, 'r') as infile:
+        j = json.load(infile)
+        geojson['features'].append(j['features'][0])
+
+with open(OUTFILE, 'w') as out:
+    json.dump(geojson, out)
