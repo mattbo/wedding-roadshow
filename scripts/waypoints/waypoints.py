@@ -1,8 +1,4 @@
-
-import json
-import writer
-import os.path
-from pathlib import Path
+from routes import Route
 
 OUTFILE = 'wedding_path.geojson'
 MAP_FILES = '__map_files'
@@ -116,6 +112,7 @@ past = [
     'Missoula, MT',
     'Jackson Hot Springs, MT',
     'Bozeman Hot Springs, MT',
+    'Chico Hot Sprints Resort & Day Spa, Chico Road, Pray, MT',
     'Yellowstone National Park North Entrance, MT',
     'Mammoth Hot Springs Hotel, Yellowstone, WY 82190',
     'Bozeman, MT',
@@ -125,31 +122,91 @@ past = [
     'Mustang Ridge Campground, Dutch John, UT 84023',
     'Ashley National Forest, US-191, Dutch John, UT 84023',
     'Cub Creek Petroglyphs, Jensen, UT 84035',
+    'Cedar campground, Colorado 325, Rifle, CO',
     'Aspen, CO',
     'Fort Collins, CO',
     'Boulder, CO',
     'Cheyenne Mountain State Park, CO',
+    'Garden of the Gotds, North 30th St, Colorado Springs, CO',
     'Taos, NM',
+    'Black Rock Hot Springs, NM',
+    'Taos, NM',
+    'Arroyo Seco, NM',
+    'Taos, NM',
+    'Enchanted Circle Pottery, Taos, NM',
     'Santa Fe, NM',
+    'Bandelier National Monument, NM',
+    'Rancho Gallina Eco-Retreat, Santa Fe, NM',
+    'Los Cerrillos, NM',
+    'Madrid, NM',
+    'Golden, NM',
     'Las Cruces, NM',
     'White Sands National Monument, NM',
-    'Oliver Lee Start Park, NM'
+    'Oliver Lee Memorial State Park, NM',
+    'Ruidoso, NM',
+    'Roswell, NM',
+    'Carlsbad Caverns National Park Visitor Center, NM',
+    'Guadalupe Mountains National Park, TX',
+    'Marfa, TX',
+    'Cottonwood Campground, Big Bend National Park, TX',
+    'Chisos Basin Visitor Center, Big Bend National Park, TX',
+    'Rio Grande Village Visitor Center, Big Bend National Park, TX',
+    'Del Rio, TX',
+    'San Antonio, TX',
+    'Pecan Grove RV Park, Austin, TX',
+    'Surfside Beach, TX',
+    'Bolivar Beach, Bolivar Peninsula, TX',
+    '1701 Barbecue, 1701 Calder Ave, Beaumont, TX',
+    'Cameron Ferry West Landing, 200 Gulf Beach Hwy, Cameron, LA 70631',
+    'Lake Charles, LA',
+    'Bell City, LA',
+    'Lake Arthur, LA',
+    'Cypremort Point State Park, LA',
+    'Avery Island, LA',
+    'Huey P Long Bridge, Bridge City, LA',
+    'Lowerline St, New Orleans, LA',
+    'Gulf State Park, AL',
+    'Topsail Hill State Park, FL'
 ]
 
 future = [
-    'Oliver Lee Start Park, NM',
-    'Guadalupe Mountains State Park, NM',
-    'Carlsbad Caverns, Carlsbad, NM',
-    'Marfa, TX',
-    'Big Bend National Park, TX',
-    'Austin, TX',
-    'Galveston, TX',
-    'New Orleans, LA',
-    'Atlanta, GA',
+    'Topsail Hill State Park, FL',
+    'St. George Island, FL',
+    'Jacksonville, FL',
     'Savannah, GA',
-    'Spartanburg, SC',
+    'Columbia, SC',
+    'Emerald Isle, NC',
+    'Ocracoke Island, NC',
+    'Cedar Grove, NC',
     'Charlotte, NC',
-    'Ashville, NC',
+    'Asheville, NC',
+    # Blue Ridge Parkway south...
+    'Wash Creek Valley Overlook, Blue Ridge Parkway, NC',
+    'Stony Bald Overlook, Blue Ridge Parkway, NC',
+    'Mills River Valley Overlook, Blue Ridge Parkway, NC',
+    'East Fork Overlook, Blue Ridge Parkway, NC',
+    'John Rock Overlook, Blue Ridge Parkway, NC',
+    'Rough Butt Bald Overlook, Blue Ridge Parkway, NC',
+    'Roy Taylor Forest Overlook, Blue Ridge Parkway, NC',
+    'Ravensford, NC',
+    'Asheville, NC',
+    # Blue Ridge Parkway north...
+    'Haw Creek Valley Overlook, Blue Ridge Parkway, NC',
+    'Lane Pinnacle Overlook, Blue Ridge Parkway, NC',
+    'Walker Knob Overlook, Blue Ridge Parkway, NC',
+    'Walker Knob Overlook, Blue Ridge Parkway, NC',
+    '35.830606, -82.116096',  # near wildacres tunnel
+    '35.850598, -82.083678',  # near little switzerland tunnel
+    'Bear Den Overlook, Blue Ridge Parkway, NC',
+    '35.971865, -81.939988',  # near linville river
+    'Lost Cove Cliffs Overlook, Blue Ridge Parkway, NC',
+    'Little Bald Overlook, Blue Ridge Parkway, NC',
+    'Blowing Rock, NC',
+    'Boone, NC',
+    'Waynesboro, VA 22980',
+    'The Point Overlook, Elkton, VA'  # Shenandoah NP, Skyline Dr.
+    'Range View Overlook, Washington, VA',  # Shenandoah NP, Skyline
+    'Dickey Ridge Trailhead, Skyline Drive, Front Royal, VA',
     'Washington, DC',
     'Bethany Beach, DE',
     'Asbury Park, NJ',
@@ -158,8 +215,9 @@ future = [
     'Providence, RI',
     'Boston, MA',
     'Nashua, NH',
-    'Burlington, VT',
     'Portland, ME',
+    'South Brisol, ME',
+    'Port Clyde, ME',
     'Quebec City, Quebec, Canada',
     'Montreal, Canada',
     'North Bay, Ontario, Canada',
@@ -170,60 +228,30 @@ future = [
     'Minneapolis, MN',
     'Madeleine Island, WI',
     'Ashland, WI',
-    'Minneapolis, MN',
-    'Iowa City, IA',
+    'Peninsula State Park, WI',
     'Chicago, IL',
-    'Watertown WI',
+    'Indianapolis, IN',
+    'Louisville, KY',
+    'Nashville, TN',
+    'St Louis, MO',
+    'Columbia, MO',
+    'Kansas City, KS',
+    'Cedar Rapids, IA',
+    'Watertown, WI',
+    'Milwaukee, WI'
 ]
 
 
-def gen_filename(start, end, idx):
-    s = start[:10].replace(', ', '_').replace(' ', '_').replace(',', '_')
-    e = end[:10].replace(', ', '_').replace(' ', '_').replace(',', '_')
-    return (f"{idx:0>5}_{s}_to_{e}")
+####
+# Re-do with Segments
+####
+past_route = Route(label='past')
+for idx in range(len(past)-1):
+    past_route.find_or_create_segment(past[idx], past[idx+1])
 
+future_route = Route(label='future')
+for idx in range(len(future)-1):
+    future_route.find_or_create_segment(future[idx], future[idx+1])
+    print(f"Finished {future[idx]} to {future[idx+1]}")
 
-for p_idx in range(len(past)-1):
-    fname = gen_filename(past[p_idx], past[p_idx+1], p_idx)
-    if(not os.path.exists(os.path.join(MAP_FILES, fname))):
-        route_writer = writer.Writer()
-        route_writer.query(past[p_idx], past[p_idx+1], custom_label='past')
-        p = list(Path(MAP_FILES).glob(f"{fname[:fname.index('_')]}_*"))
-        if len(p) > 0:
-            print(f"Removing expired files:\n{p}")
-            [f.unlink() for f in p]
-        p = list(Path(MAP_FILES).glob(f"*{fname[fname.index('_'):]}"))
-        if len(p) > 0:
-            print(f"Removing travelled files:\n{p}")
-            [f.unlink() for f in p]
-        route_writer.save(os.path.join(MAP_FILES, fname))
-
-    print(f"Finished {past[p_idx]} to {past[p_idx+1]}")
-
-f_start = len(past) + 10000
-print(f"f_start : {f_start})")
-for f_idx in range(len(future)-1):
-    fname = gen_filename(future[f_idx], future[f_idx+1], f_start+f_idx)
-    if(not os.path.exists(os.path.join(MAP_FILES, fname))):
-        route_writer = writer.Writer()
-        route_writer.query(future[f_idx], future[f_idx+1],
-                           custom_label='future')
-        p = list(Path(MAP_FILES).glob(f"{fname[:fname.index('_')]}_*"))
-        if len(p) > 0:
-            print(f"Removing expired files:\n{p}")
-            [f.unlink() for f in p]
-        route_writer.save(os.path.join(MAP_FILES, fname))
-
-    print(f"Finished {future[f_idx]} to {future[f_idx+1]}")
-
-p = Path(MAP_FILES)
-files = sorted(list(p.glob("[0-9][0-9][0-9][0-9][0-9]_*")))
-geojson = {"type": "FeatureCollection", "features": []}
-for f in files:
-    print(f"appending {f}")
-    with open(f, 'r') as infile:
-        j = json.load(infile)
-        geojson['features'].append(j['features'][0])
-
-with open(OUTFILE, 'w') as out:
-    json.dump(geojson, out)
+Route.write_geojson(OUTFILE, [past_route, future_route])
