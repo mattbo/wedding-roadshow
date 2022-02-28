@@ -167,13 +167,13 @@ past = [
     'Lowerline St, New Orleans, LA',
     'Gulf State Park, AL',
     'Topsail Hill State Park, FL'
-]
-
-future = [
-    'Topsail Hill State Park, FL',
     'St. George Island, FL',
     'Jacksonville, FL',
     'Savannah, GA',
+    'Columbia, SC'
+]
+
+future = [
     'Columbia, SC',
     'Emerald Isle, NC',
     'Ocracoke Island, NC',

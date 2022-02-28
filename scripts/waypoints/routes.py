@@ -20,20 +20,27 @@ class Route():
     ALL_SEGS = False  # class variable
 
     def find_or_create_segment(self, start_loc, end_loc):
-        if not self.ALL_SEGS:
+        if self.ALL_SEGS is False:
             print("Loading all segments from files")
             self.ALL_SEGS = Segment.load_all()
+            print(f"Found {len(self.ALL_SEGS)} segments")
 
-        seg_hash = Segment.get_hash(start_loc, end_loc)
-        s = list(filter(lambda x: x.seg_hash == seg_hash, self.ALL_SEGS))
+        s = list(filter(lambda x:
+                        (x.start_loc == start_loc) and (x.end_loc == end_loc),
+                        self.ALL_SEGS))
         if len(s) > 1:
-            raise ValueError(f"Hash collision for {start_loc} to {end_loc}")
+            print("Matched the following files:")
+            for seg in s:
+                print(Segment.get_fname(seg.seg_id))
+            print("Picking the first match...")
+            return self.segments.append(s[0])
         if len(s) == 1:
             print(f"Cached: {start_loc} to {end_loc}")
-            return self.segments.append(s)
+            return self.segments.append(s[0])
 
         # create a new Segment
-        s = Segment(start_loc, end_loc, seg_hash)
+        print("No luck, building from scratch")
+        s = Segment(start_loc, end_loc)
         print(f"Generating: {start_loc} to {end_loc}")
         s.get_route(self.label)
         s.save()
@@ -48,6 +55,9 @@ class Route():
         geojson = {"type": "FeatureCollection", "features": []}
         for r in routes:
             for s in r.segments:
+                if r.label:
+                    # Check for custom label on the route (past / future)
+                    s.features[0]['properties']['name'] = r.label
                 geojson['features'].append(s.features[0])
 
         with open(OUTFILE, 'w') as out:

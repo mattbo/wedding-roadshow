@@ -3,7 +3,6 @@
 #  - a start date
 #  - a duration (drive time)
 #  - associated GeoJSON
-#  - unique hash
 #  - an ID (numeric, consecutive, filename)
 ###
 import os
@@ -20,7 +19,6 @@ SEGMENT_DIR = './segments'
 class Segment():
     start_loc: str
     end_loc: str
-    seg_hash: str = None
     start_date: date = None
     seg_id: int = None
     features: list = field(default_factory=list)
@@ -34,10 +32,6 @@ class Segment():
         # Somehow, this should be atomic...
         Segment.MAX_SEGMENT_ID += 1
         self.seg_id = Segment.MAX_SEGMENT_ID
-
-        # also make sure that the hash has been set
-        if not self.seg_hash:
-            self.seg_hash = self.get_hash(self.start_loc, self.end_loc)
 
         segment = asdict(self)
         fname = self.get_fname(self.seg_id)
@@ -84,10 +78,6 @@ class Segment():
     @classmethod
     def get_fname(cls, s_id):
         return os.path.join(SEGMENT_DIR, f"{s_id:0>7}")
-
-    @classmethod
-    def get_hash(cls, start_loc, end_loc):
-        return hash(f"from:{start_loc};to:{end_loc}")
 
     @classmethod
     def load_by_id(cls, s_id):
