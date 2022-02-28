@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
+import ReactDOM from 'react-dom';
 import { GoogleMap, LoadScript, Data } from '@react-google-maps/api';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
@@ -11,7 +12,6 @@ import { ref, onValue, set, push } from 'firebase/database';
 import "../css/map.css"
 
 const containerStyle = {
-    // width: '700px',
     width: '100%',
     height: '500px'
 };
@@ -23,7 +23,9 @@ const libraries = ['places'];
 const MyMap = () => {
 
     let note={};
+    const iw = useRef({});
     const markerData = useRef([]);
+    const markerList = useRef([]);
     const [placeInfo, setPlaceInfo] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
@@ -61,7 +63,6 @@ const MyMap = () => {
         const timestamp = new Date();
         const loc = { lat: placeInfo.geometry.location.lat(),
                       lng: placeInfo.geometry.location.lng() };
-        // const entry = firebase.database().ref("/map_points").push();
         const entry = push(ref(firebase.db, '/map_points'))
         const placeObj = {placeLoc: loc,
                           placeName: placeInfo.name,
@@ -69,7 +70,6 @@ const MyMap = () => {
                           placeReason: note.reason,
                           testing: "yep",
                           creationDate: timestamp.toJSON() };
-        //entry.set(placeObj);
         set(entry, placeObj);
         buildMarker(placeObj);
         setShowModal(false);
@@ -83,15 +83,30 @@ const MyMap = () => {
         const noteStr = `<h3>${placeName}</h3>` +
                 `<p><em>${placePerson} says:</em></p>` +
                 `<p>${placeReason}</p>`;
-        const iw = new global.google.maps.InfoWindow({ content:noteStr });
         const m = new global.google.maps.Marker({
             position: placeLoc,
             map: searchObj.current.mapRef,
             color: visited ? "green" : "blue",
             title: placeName});
-        m.addListener("click", () => { iw.open(searchObj.current.mapRef, m); });
+        m.addListener("click", () => {
+            iw.current.setContent(noteStr);
+            iw.current.open(searchObj.current.mapRef, m);
+        });
+        markerList.current.push(m);
     }
 
+    const onMarkerControlClick = (evt) => {
+        const tgt = evt.target;
+        console.log(evt.target);
+        console.log(tgt.checked);
+        if (!tgt.checked) {
+            console.log("Hiding markers");
+            markerList.current.forEach(m => m.setMap(null));
+        } else {
+            console.log("Showing markers");
+            markerList.current.forEach(m => m.setMap(searchObj.current.mapRef));
+        }
+    }
 
     const doSearch = (evt) => {
         evt.preventDefault();
@@ -120,10 +135,21 @@ const MyMap = () => {
               googleMapsApiKey={process.env.FIREBASE_APIKEY} >
 
             <GoogleMap mapContainerStyle={containerStyle}
+              options={{
+                disableDefaultUI: true,
+                fullscreenControl: true
+              }}
               onLoad={ (map) => { 
+                  iw.current = new global.google.maps.InfoWindow();
                   searchObj.current.mapRef = map;
                   searchObj.current.mapService = new global.google.maps.places
                       .PlacesService(searchObj.current.mapRef);
+
+                  // Add the control to allow hiding the markers
+                  const ctrl = document.createElement('div');
+                  ReactDOM.render(
+                    <MarkerControl onClick={onMarkerControlClick} />, ctrl);
+                  map.controls[global.google.maps.ControlPosition.TOP_RIGHT].push(ctrl);
 
                   // Load the GeoJson for the route.  Each section will have
                   // a 'name' property set to either 'past' or 'future'
@@ -230,6 +256,21 @@ const MapsResults = ({results, add_callback}) => {
             </tbody>
         </Table>
     )
+}
+
+const MarkerControl = ({onClick}) => {
+    const style = {
+        backgroundColor: 'white',
+        fontSize: '150%',
+        fontWeight: 'bold',
+        margin: '0.5em 0.5em 0 0'
+    }
+
+    return (
+        <label style={style}>
+          <input type="checkbox" onChange={onClick} defaultChecked /> Places
+        </label> 
+    );
 }
 
 export default MyMap;
