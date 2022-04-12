@@ -153,11 +153,15 @@ past = [
     'Rio Grande Village Visitor Center, Big Bend National Park, TX',
     'Del Rio, TX',
     'San Antonio, TX',
+    'New Braunfels, TX',
+    'Pecan Grove RV Park, Austin, TX',
+    'Dripping Springs, TX',
     'Pecan Grove RV Park, Austin, TX',
     'Surfside Beach, TX',
     'Bolivar Beach, Bolivar Peninsula, TX',
     '1701 Barbecue, 1701 Calder Ave, Beaumont, TX',
     'Cameron Ferry West Landing, 200 Gulf Beach Hwy, Cameron, LA 70631',
+    'Hackberry, LA',
     'Lake Charles, LA',
     'Bell City, LA',
     'Lake Arthur, LA',
@@ -170,13 +174,18 @@ past = [
     'St. George Island, FL',
     'Jacksonville, FL',
     'Savannah, GA',
-    'Columbia, SC'
-]
-
-future = [
     'Columbia, SC',
-    'Emerald Isle, NC',
+    'Aynor, SC',
+    'Galivants Ferry, SC',
+    'Fair Bluff, NC 28439',
+    'Wilmington, NC',
+    'Serenity Point, Topsail Beach, NC',
+    'North Topsail Beach, NC',
+    'Emerald Isle, NC 28594',
     'Ocracoke Island, NC',
+    'Kitty Hawk, NC',
+    'Cedar Grove, NC',
+    'Chapel Hill, NC',
     'Cedar Grove, NC',
     'Charlotte, NC',
     'Asheville, NC',
@@ -186,9 +195,8 @@ future = [
     'Mills River Valley Overlook, Blue Ridge Parkway, NC',
     'East Fork Overlook, Blue Ridge Parkway, NC',
     'John Rock Overlook, Blue Ridge Parkway, NC',
-    'Rough Butt Bald Overlook, Blue Ridge Parkway, NC',
-    'Roy Taylor Forest Overlook, Blue Ridge Parkway, NC',
-    'Ravensford, NC',
+    'Sam Knob Trailhead, Black Balsam Knob Rd, Canton, NC 28716'
+    'Brevard, NC',
     'Asheville, NC',
     # Blue Ridge Parkway north...
     'Haw Creek Valley Overlook, Blue Ridge Parkway, NC',
@@ -198,18 +206,39 @@ future = [
     '35.830606, -82.116096',  # near wildacres tunnel
     '35.850598, -82.083678',  # near little switzerland tunnel
     'Bear Den Overlook, Blue Ridge Parkway, NC',
+    '4682 Blue Ridge Pkwy, Linville, NC 28646'
     '35.971865, -81.939988',  # near linville river
+    'Linville Falls Visitor Center, Warrior Ln, Marion, NC',
     'Lost Cove Cliffs Overlook, Blue Ridge Parkway, NC',
     'Little Bald Overlook, Blue Ridge Parkway, NC',
+    'Grandfather Mountain Overlook, Blue Ridge Parkway, NC',
     'Blowing Rock, NC',
     'Boone, NC',
-    'Waynesboro, VA 22980',
-    'The Point Overlook, Elkton, VA'  # Shenandoah NP, Skyline Dr.
-    'Range View Overlook, Washington, VA',  # Shenandoah NP, Skyline
-    'Dickey Ridge Trailhead, Skyline Drive, Front Royal, VA',
+    '37.22282107060463, -79.92671615351344',
+    'Roanoke River Overlook, Blue Ridge Pkwy, Roanoke, VA 24014',
+    '37.328318, -79.856827',
+    'Apple Orchard Falls Trailhead, Buchanan, VA',
+    'Boston Knob Overlook, Vesuvius, VA',
+    'Afton Overlook, Afton, VA 22920',
+    'Brown Mountain Overlook, Free Union, VA 22940',
+    'Bearfence Mountain Trailhead, Elkton, VA',
+    '38.651522, -78.311583',
+    'Sperryville, VA',
+    'Culpepper, VA',
+    'District Heights, MD',
     'Washington, DC',
+    'Leesburg, VA',
+    'Washington, DC',
+    'Fairfax, VA',
+    'Falls Church, VA',
+    'Baltimore, MD'
+]
+
+future = [
+    'Baltimore, MD',
     'Bethany Beach, DE',
-    'Asbury Park, NJ',
+    'Fins Fish House & Raw Bar, Rehoboth, DE',
+    'Manalapan, NJ',
     'New York, NY',
     'Kingston, NY',
     'Providence, RI',

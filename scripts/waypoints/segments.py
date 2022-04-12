@@ -23,6 +23,7 @@ class Segment():
     seg_id: int = None
     features: list = field(default_factory=list)
     avoid: str = 'highways'  # format multiples as "highways|ferries|tolls"
+    # seg_hash: Optional[str]
 
     MAX_SEGMENT_ID = 0  # class attribute
 
@@ -98,3 +99,23 @@ class Segment():
         for seg in os.listdir(SEGMENT_DIR):
             segments.append(cls.load_by_id(seg))
         return segments
+
+    @classmethod
+    def cleanup(cls):
+        for seg in os.listdir(SEGMENT_DIR):
+            print(f"Checking segment {seg}")
+            fname = cls.get_fname(seg)
+            with open(fname, 'r') as infile:
+                d = json.load(infile)
+            if 'seg_hash' in d.keys():
+                print("found hash")
+                del(d['seg_hash'])
+            else:
+                print("no hash")
+            segment = asdict(cls(**d))
+            with open(fname, 'w') as out:
+                json.dump(segment, out)
+
+
+if __name__ == '__main__':
+    Segment.cleanup()
