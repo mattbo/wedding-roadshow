@@ -231,19 +231,33 @@ past = [
     'Washington, DC',
     'Fairfax, VA',
     'Falls Church, VA',
-    'Baltimore, MD'
-]
-
-future = [
     'Baltimore, MD',
     'Bethany Beach, DE',
     'Fins Fish House & Raw Bar, Rehoboth, DE',
-    'Manalapan, NJ',
-    'New York, NY',
+    'Dover, DE',
+    'Windsor, NJ',
+    'Morton, PA',
+    'Bethlehem, PA',
+    'Saratoga Springs, NY',
     'Kingston, NY',
+    'Bedford-Stuyvesant, Brooklyn, NY',
+    '101 West End Ave, NY, NY',
+    'Kingston, NY',
+    'Cheshire, CT',
+    'Old Saybrook, CT',
+    'Point Judith, RI',
     'Providence, RI',
+    'Beavertail State Park, RI',
+    'Providence, RI',
+    'North Weymouth, MA',
+    'Boston, MA'
+]
+
+future = [
     'Boston, MA',
-    'Nashua, NH',
+    'Springfield, MA',
+    'Lowell, MA'
+    'Moultonborough, NH',
     'Portland, ME',
     'South Brisol, ME',
     'Port Clyde, ME',
