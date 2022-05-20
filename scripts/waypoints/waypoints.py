@@ -250,14 +250,15 @@ past = [
     'Beavertail State Park, RI',
     'Providence, RI',
     'North Weymouth, MA',
-    'Boston, MA'
-]
-
-future = [
     'Boston, MA',
     'Springfield, MA',
     'Lowell, MA'
     'Moultonborough, NH',
+    'Lyman, ME',
+    'Portland, ME'
+]
+
+future = [
     'Portland, ME',
     'South Brisol, ME',
     'Port Clyde, ME',
